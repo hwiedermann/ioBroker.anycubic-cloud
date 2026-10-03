@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "news": {
+      "0.2.1": {
+        "en": "Repository compliance: metadata, i18n for all required languages, official CI workflow, English-only docs with German under docs/de, eslint config",
+        "de": "Repository-Konformität: Metadaten, i18n in allen Pflichtsprachen, offizieller CI-Workflow, englische Doku mit Deutsch unter docs/de, eslint-Config",
+        "ru": "Соответствие репозитория: метаданные, i18n для всех необходимых языков, официальный рабочий процесс CI, документация только на английском языке и немецком языке в docs/de, конфигурация eslint",
+        "pt": "Conformidade do repositório: metadados, i18n para todos os idiomas necessários, fluxo de trabalho de CI oficial, documentos somente em inglês com alemão em docs/de, configuração eslint",
+        "nl": "Naleving van de repository: metadata, i18n voor alle vereiste talen, officiële CI-workflow, alleen Engelstalige documenten met Duits onder docs/de, eslint-configuratie",
+        "fr": "Conformité du référentiel : métadonnées, i18n pour toutes les langues requises, flux de travail officiel CI, documents en anglais uniquement avec l'allemand sous docs/de, configuration eslint",
+        "it": "Conformità del repository: metadati, i18n per tutte le lingue richieste, flusso di lavoro CI ufficiale, documenti solo in inglese con tedesco in docs/de, configurazione eslint",
+        "es": "Cumplimiento del repositorio: metadatos, i18n para todos los idiomas requeridos, flujo de trabajo oficial de CI, documentos solo en inglés con alemán en docs/de, configuración de eslint",
+        "pl": "Zgodność repozytorium: metadane, i18n dla wszystkich wymaganych języków, oficjalny przepływ pracy CI, dokumenty tylko w języku angielskim z niemieckim w sekcji docs/de, konfiguracja eslint",
+        "uk": "Відповідність репозиторію: метадані, i18n для всіх необхідних мов, офіційний робочий процес CI, документи лише англійською мовою з німецькою в docs/de, конфігурація eslint",
+        "zh-cn": "存储库合规性：元数据、所有必需语言的 i18n、官方 CI 工作流程、docs/de 下的纯英语文档和德语、eslint 配置"
+      },
       "0.2.0": {
         "en": "First public beta: robust reconnect with backoff, plain-text status, dead-man watchdog, token-expiry warning",
         "de": "Erste öffentliche Beta: robuster Reconnect mit Backoff, Klartext-Status, Totmann-Wächter, Token-Ablauf-Warnung",
