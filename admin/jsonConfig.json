@@ -1,0 +1,25 @@
+{
+  "i18n": false,
+  "type": "panel",
+  "items": {
+    "hinweis": {
+      "type": "staticText",
+      "text": "Dieser Adapter liest nur und schickt keine Befehle an den Drucker. Nötig ist der Zugangs-Token aus Anycubic Slicer Next (rund 90 Tage gültig). Wie man ihn bekommt, steht in der Anleitung des Adapters (README).",
+      "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+    },
+    "token": {
+      "type": "password",
+      "label": "Slicer-Token (access_token)",
+      "repeat": false,
+      "visible": true,
+      "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+    },
+    "restMinuten": {
+      "type": "number",
+      "label": "REST-Abgleich alle … Minuten",
+      "min": 5,
+      "max": 120,
+      "xs": 12, "sm": 6, "md": 4, "lg": 3, "xl": 3
+    }
+  }
+}

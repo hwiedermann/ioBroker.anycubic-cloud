@@ -1,0 +1,88 @@
+{
+  "common": {
+    "name": "anycubic-cloud",
+    "version": "0.1.2",
+    "news": {
+      "0.1.2": {
+        "en": "First version: reads printer status, print job and ACE (filament usage per slot) over the Anycubic cloud, read-only",
+        "de": "Erste Version: liest Druckerstatus, Druckauftrag und ACE (Filamentverbrauch je Slot) über die Anycubic-Cloud, nur lesend"
+      }
+    },
+    "titleLang": {
+      "en": "Anycubic Cloud",
+      "de": "Anycubic Cloud"
+    },
+    "desc": {
+      "en": "Anycubic printers (Kobra S1 + ACE Pro) via the Anycubic cloud, read-only",
+      "de": "Anycubic-Drucker (Kobra S1 + ACE Pro) über die Anycubic-Cloud, nur lesend"
+    },
+    "authors": [
+      "Hendrik"
+    ],
+    "keywords": [
+      "anycubic",
+      "kobra",
+      "3d printer",
+      "ace pro"
+    ],
+    "license": "GPL-3.0-or-later",
+    "platform": "Javascript/Node.js",
+    "icon": "anycubic-cloud.svg",
+    "extIcon": "",
+    "enabled": true,
+    "mode": "daemon",
+    "type": "hardware",
+    "compact": false,
+    "connectionType": "cloud",
+    "dataSource": "push",
+    "adminUI": {
+      "config": "json"
+    },
+    "tier": 3,
+    "loglevel": "info",
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.0.0"
+      }
+    ]
+  },
+  "native": {
+    "token": "",
+    "restMinuten": 10
+  },
+  "encryptedNative": [
+    "token"
+  ],
+  "protectedNative": [
+    "token"
+  ],
+  "objects": [],
+  "instanceObjects": [
+    {
+      "_id": "info",
+      "type": "channel",
+      "common": {
+        "name": "Information"
+      },
+      "native": {}
+    },
+    {
+      "_id": "info.connection",
+      "type": "state",
+      "common": {
+        "role": "indicator.connected",
+        "name": "MQTT verbunden",
+        "type": "boolean",
+        "read": true,
+        "write": false,
+        "def": false
+      },
+      "native": {}
+    }
+  ]
+}
