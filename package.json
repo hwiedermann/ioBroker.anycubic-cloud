@@ -56,6 +56,7 @@
     "admin/",
     "io-package.json",
     "LICENSE",
+    "COPYING",
     "README.md"
   ]
 }

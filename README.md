@@ -172,6 +172,7 @@ Requirements: Node.js >= 22, js-controller >= 6, Admin >= 7.6.17.
 -->
 ### **WORK IN PROGRESS**
 
+- License text moved to COPYING (unchanged GPL-3.0); LICENSE now holds the copyright and license notice
 - Token field in the admin is now a multi-line text field, so browsers no longer offer to generate or save a password for it (the token is still stored encrypted)
 
 ### 0.2.2 (2026-10-03)
@@ -198,6 +199,6 @@ Requirements: Node.js >= 22, js-controller >= 6, Admin >= 7.6.17.
 
 Copyright (c) 2026 Hendrik <iobroker@hwiedermann.de>
 
-This adapter is licensed under **GPL-3.0-or-later**; see the [LICENSE](LICENSE) file for the full
-license text. It builds on findings from the
+This adapter is licensed under **GPL-3.0-or-later**; see [LICENSE](LICENSE) for the license notice
+and [COPYING](COPYING) for the full license text. It builds on findings from the
 [`anycubic-cloud-api`](https://pypi.org/project/anycubic-cloud-api/) project (GPL-3.0).
