@@ -34,8 +34,7 @@
     "lint": "eslint .",
     "test:package": "mocha test/package.cjs --exit",
     "test": "npm run test:package",
-    "translate": "translate-adapter translate",
-    "test:integration": "mocha test/integration.cjs --exit"
+    "translate": "translate-adapter translate"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.4.3",
