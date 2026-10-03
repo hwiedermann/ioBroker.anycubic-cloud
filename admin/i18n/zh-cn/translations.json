@@ -1,4 +1,5 @@
 {
+  "Guide and token helper script (GitHub)": "指南和令牌帮助程序脚本 (GitHub)",
   "REST resync every … minutes": "REST 每…分钟重新同步一次",
   "Sets info.tokenWarnung and writes a warning to the log.": "设置 info.tokenWarnung 并将警告写入日志。",
   "Slicer token (access_token)": "切片器令牌（access_token）",

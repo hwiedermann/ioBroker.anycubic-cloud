@@ -57,7 +57,7 @@
       "zh-cn": "Anycubic 打印机 (Kobra S1 + ACE Pro) 通过 Anycubic 云，只读"
     },
     "authors": [
-      "Hendrik"
+      "Hendrik <iobroker@hwiedermann.de>"
     ],
     "keywords": [
       "anycubic",
@@ -86,7 +86,7 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=7.6.17"
+        "admin": ">=7.6.20"
       }
     ],
     "licenseInformation": {

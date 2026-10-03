@@ -5,21 +5,45 @@
     "hinweis": {
       "type": "staticText",
       "text": "This adapter is read-only and sends no commands to the printer. The printer must be connected to the Anycubic cloud (not in pure LAN/offline mode). It needs the access token from Anycubic Slicer Next (valid for about 90 days). How to obtain it is described in the adapter's documentation (README).",
-      "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+      "xs": 12,
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
+    },
+    "anleitung": {
+      "type": "staticLink",
+      "label": "Guide and token helper script (GitHub)",
+      "href": "https://github.com/hwiedermann/ioBroker.anycubic-cloud#obtaining-the-token",
+      "button": true,
+      "icon": "info",
+      "xs": 12,
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
     },
     "token": {
       "type": "password",
       "label": "Slicer token (access_token)",
       "repeat": false,
       "visible": true,
-      "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
+      "xs": 12,
+      "sm": 12,
+      "md": 12,
+      "lg": 12,
+      "xl": 12
     },
     "restMinuten": {
       "type": "number",
       "label": "REST resync every … minutes",
       "min": 5,
       "max": 120,
-      "xs": 12, "sm": 6, "md": 4, "lg": 3, "xl": 3
+      "xs": 12,
+      "sm": 6,
+      "md": 4,
+      "lg": 3,
+      "xl": 3
     },
     "tokenWarnTage": {
       "type": "number",
@@ -27,7 +51,11 @@
       "min": 1,
       "max": 60,
       "help": "Sets info.tokenWarnung and writes a warning to the log.",
-      "xs": 12, "sm": 6, "md": 4, "lg": 3, "xl": 3
+      "xs": 12,
+      "sm": 6,
+      "md": 4,
+      "lg": 3,
+      "xl": 3
     }
   }
 }
