@@ -170,6 +170,10 @@ Requirements: Node.js >= 22, js-controller >= 6, Admin >= 7.6.17.
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+- Token field in the admin is now a multi-line text field, so browsers no longer offer to generate or save a password for it (the token is still stored encrypted)
+
 ### 0.2.2 (2026-10-03)
 
 * Token helper script moved to `tools/` (no longer part of the npm package); README and admin page link to the guide on GitHub
