@@ -91,7 +91,8 @@ again in the slicer and renew the token.
 
 ### With the helper script (recommended)
 
-The `admin/` folder contains **`token-holen.ps1`** (PowerShell).
+The repository contains the helper script **[`tools/token-holen.ps1`](https://github.com/hwiedermann/ioBroker.anycubic-cloud/blob/main/tools/token-holen.ps1)** (PowerShell). It is **not** part of the
+installed adapter package — download it from GitHub (open the link → "Download raw file").
 
 **What the script does:**
 

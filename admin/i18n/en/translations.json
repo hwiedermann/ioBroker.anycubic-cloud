@@ -3,5 +3,6 @@
   "Slicer token (access_token)": "Slicer token (access_token)",
   "REST resync every … minutes": "REST resync every … minutes",
   "Warn before token expiry (days)": "Warn before token expiry (days)",
-  "Sets info.tokenWarnung and writes a warning to the log.": "Sets info.tokenWarnung and writes a warning to the log."
+  "Sets info.tokenWarnung and writes a warning to the log.": "Sets info.tokenWarnung and writes a warning to the log.",
+  "Guide and token helper script (GitHub)": "Guide and token helper script (GitHub)"
 }

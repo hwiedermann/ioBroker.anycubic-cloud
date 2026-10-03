@@ -1,4 +1,5 @@
 {
+  "Guide and token helper script (GitHub)": "Руководство и вспомогательный сценарий токена (GitHub)",
   "REST resync every … minutes": "REST синхронизируется каждые … минут.",
   "Sets info.tokenWarnung and writes a warning to the log.": "Устанавливает info.tokenWarnung и записывает предупреждение в журнал.",
   "Slicer token (access_token)": "Токен среза (access_token)",

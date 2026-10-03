@@ -55,7 +55,7 @@ Pro Drucker unter `anycubic-cloud.0.<id>`:
    **„Slicer-Token"** eintragen.
 3. Speichern. Der Adapter meldet sich an, findet den Drucker und füllt den Objektbaum.
 
-Die ausführliche Token-Anleitung (Hilfsskript `admin/token-holen.ps1`, nur Windows x64 getestet, sowie
+Die ausführliche Token-Anleitung (Hilfsskript [`tools/token-holen.ps1`](https://github.com/hwiedermann/ioBroker.anycubic-cloud/blob/main/tools/token-holen.ps1) — liegt nur im GitHub-Repo, nicht im installierten Adapter; nur Windows x64 getestet, sowie
 der manuelle Weg) steht in der englischen [README.md](../../README.md).
 
 ## Lizenz
