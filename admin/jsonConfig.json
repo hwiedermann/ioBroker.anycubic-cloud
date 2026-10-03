@@ -1,35 +1,32 @@
 {
-  "i18n": false,
+  "i18n": true,
   "type": "panel",
   "items": {
     "hinweis": {
       "type": "staticText",
-      "text": {
-        "de": "Dieser Adapter liest nur und schickt keine Befehle an den Drucker. Der Drucker muss mit der Anycubic-Cloud verbunden sein (nicht im reinen LAN-/Offline-Modus). Nötig ist der Zugangs-Token aus Anycubic Slicer Next (rund 90 Tage gültig). Wie man ihn bekommt, steht in der Anleitung des Adapters (README).",
-        "en": "This adapter is read-only and sends no commands to the printer. The printer must be connected to the Anycubic cloud (not in pure LAN/offline mode). It needs the access token from Anycubic Slicer Next (valid for about 90 days). How to obtain it is described in the adapter's documentation (README)."
-      },
+      "text": "This adapter is read-only and sends no commands to the printer. The printer must be connected to the Anycubic cloud (not in pure LAN/offline mode). It needs the access token from Anycubic Slicer Next (valid for about 90 days). How to obtain it is described in the adapter's documentation (README).",
       "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
     },
     "token": {
       "type": "password",
-      "label": { "de": "Slicer-Token (access_token)", "en": "Slicer token (access_token)" },
+      "label": "Slicer token (access_token)",
       "repeat": false,
       "visible": true,
       "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
     },
     "restMinuten": {
       "type": "number",
-      "label": { "de": "REST-Abgleich alle … Minuten", "en": "REST resync every … minutes" },
+      "label": "REST resync every … minutes",
       "min": 5,
       "max": 120,
       "xs": 12, "sm": 6, "md": 4, "lg": 3, "xl": 3
     },
     "tokenWarnTage": {
       "type": "number",
-      "label": { "de": "Warnung vor Token-Ablauf (Tage)", "en": "Warn before token expiry (days)" },
+      "label": "Warn before token expiry (days)",
       "min": 1,
       "max": 60,
-      "help": { "de": "Setzt info.tokenWarnung und schreibt eine Warnung ins Log.", "en": "Sets info.tokenWarnung and writes a warning to the log." },
+      "help": "Sets info.tokenWarnung and writes a warning to the log.",
       "xs": 12, "sm": 6, "md": 4, "lg": 3, "xl": 3
     }
   }

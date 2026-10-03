@@ -4,8 +4,12 @@
   "description": "ioBroker-Adapter für Anycubic-Drucker über die Anycubic-Cloud (Kobra S1 + ACE Pro)",
   "type": "module",
   "license": "GPL-3.0-or-later",
-  "author": "Hendrik",
+  "author": {
+    "name": "Hendrik",
+    "email": "iobroker@hwiedermann.de"
+  },
   "keywords": [
+    "ioBroker",
     "iobroker",
     "anycubic",
     "kobra",
@@ -26,24 +30,27 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "probe:rest": "node werkzeuge/probe-rest.ts",
-    "wiedergabe": "node werkzeuge/wiedergabe.ts",
-    "paket": "npm run build && npm pack",
-    "prepare": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build",
+    "lint": "eslint .",
     "test:package": "mocha test/package.cjs --exit",
-    "test": "mocha test/package.cjs --exit"
+    "test": "npm run test:package",
+    "translate": "translate-adapter translate",
+    "test:integration": "mocha test/integration.cjs --exit"
   },
   "dependencies": {
     "@iobroker/adapter-core": "^3.4.3",
     "mqtt": "^5.16.0"
   },
   "devDependencies": {
+    "@iobroker/adapter-dev": "^1.4.0",
+    "@iobroker/eslint-config": "^2.0.2",
+    "@iobroker/testing": "^6.3.0",
     "@iobroker/types": "^7.2.4",
+    "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.20.5",
-    "typescript": "^5.9.3",
-    "@iobroker/testing": "^5.0.4",
+    "chai": "^4.5.0",
     "mocha": "^10.7.3",
-    "chai": "^4.5.0"
+    "typescript": "^5.9.3"
   },
   "main": "build/main.js",
   "files": [

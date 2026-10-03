@@ -1,0 +1,7 @@
+{
+  "REST resync every … minutes": "REST resincronización cada... minutos",
+  "Sets info.tokenWarnung and writes a warning to the log.": "Establece info.tokenWarnung y escribe una advertencia en el registro.",
+  "Slicer token (access_token)": "Token de segmentación (access_token)",
+  "This adapter is read-only and sends no commands to the printer. The printer must be connected to the Anycubic cloud (not in pure LAN/offline mode). It needs the access token from Anycubic Slicer Next (valid for about 90 days). How to obtain it is described in the adapter's documentation (README).": "Este adaptador es de sólo lectura y no envía comandos a la impresora. La impresora debe estar conectada a la nube Anycubic (no en modo LAN puro/fuera de línea). Necesita el token de acceso de Anycubic Slicer Next (válido por aproximadamente 90 días). Cómo obtenerlo se describe en la documentación del adaptador (README).",
+  "Warn before token expiry (days)": "Advertir antes de que expire el token (días)"
+}
