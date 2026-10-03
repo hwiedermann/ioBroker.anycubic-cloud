@@ -366,6 +366,8 @@ Requirements: Node.js ≥ 22, js-controller ≥ 6, Admin ≥ 7.
 ### 0.1.0
 * Initial read-only version: printer status, print job and ACE (filament usage per slot) over the Anycubic cloud
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 GPL-3.0-or-later. This adapter builds on findings from the
