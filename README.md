@@ -6,6 +6,8 @@ ioBroker-Adapter für Anycubic-Drucker (getestet mit **Kobra S1 + ACE 2 Pro**) �
 **Anycubic-Cloud**. Der Adapter ist **rein lesend**: Er bildet den Druckerzustand in ioBroker ab
 und schickt **keine** Befehle an den Drucker. Im Code gibt es bewusst weder `publish` noch `sendOrder`.
 
+Hersteller/Gerät: [Anycubic Kobra S1](https://www.anycubic.com/products/kobra-s1-combo) · [Anycubic](https://www.anycubic.com)
+
 > ⚠️ **Beta, inoffiziell, auf eigenes Risiko.** Anycubic bietet keine öffentliche Schnittstelle;
 > der Adapter nutzt dieselben Cloud-Aufrufe wie der Slicer und greift dafür zur Laufzeit auf
 > App-Kennungen und Zertifikate von Anycubic zu. Ändert Anycubic etwas, kann der Adapter ausfallen
@@ -187,6 +189,8 @@ ioBroker adapter for Anycubic printers (tested with **Kobra S1 + ACE 2 Pro**) vi
 **Anycubic cloud**. The adapter is **read-only**: it mirrors the printer state in ioBroker and sends
 **no** commands to the printer. There is deliberately neither `publish` nor `sendOrder` in the code.
 
+Manufacturer/device: [Anycubic Kobra S1](https://www.anycubic.com/products/kobra-s1-combo) · [Anycubic](https://www.anycubic.com)
+
 > ⚠️ **Beta, unofficial, at your own risk.** Anycubic offers no public API; the adapter uses the same
 > cloud calls as the slicer and, to do so, accesses Anycubic's app credentials and certificates at
 > runtime. If Anycubic changes something, the adapter may stop working or access may be blocked. So
@@ -349,6 +353,18 @@ Requirements: Node.js ≥ 22, js-controller ≥ 6, Admin ≥ 7.
   - `probe-rest.ts` / `probe-mqtt.ts` read the cloud directly (read-only) and write redacted output.
 - App credentials and MQTT certificates are **not** in the repo; they are read at runtime from the
   pinned PyPI package `anycubic-cloud-api` (verified via SHA-256).
+
+## Changelog
+
+<!--
+    Placeholder for the next version (at the beginning of the line):
+    ### **WORK IN PROGRESS**
+-->
+### 0.2.0 (2026-10-03)
+* First public beta: robust reconnect with backoff, plain-text status (`info.status`), dead-man watchdog, token-expiry warning (`info.tokenWarnung`), single-flight REST resync
+
+### 0.1.0
+* Initial read-only version: printer status, print job and ACE (filament usage per slot) over the Anycubic cloud
 
 ## License
 

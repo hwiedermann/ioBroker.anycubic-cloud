@@ -1,8 +1,12 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.1.2",
+    "version": "0.2.0",
     "news": {
+      "0.2.0": {
+        "en": "First public beta: robust reconnect with backoff, plain-text status, dead-man watchdog, token-expiry warning",
+        "de": "Erste öffentliche Beta: robuster Reconnect mit Backoff, Klartext-Status, Totmann-Wächter, Token-Ablauf-Warnung"
+      },
       "0.1.2": {
         "en": "First version: reads printer status, print job and ACE (filament usage per slot) over the Anycubic cloud, read-only",
         "de": "Erste Version: liest Druckerstatus, Druckauftrag und ACE (Filamentverbrauch je Slot) über die Anycubic-Cloud, nur lesend"
@@ -25,10 +29,9 @@
       "3d printer",
       "ace pro"
     ],
-    "license": "GPL-3.0-or-later",
     "platform": "Javascript/Node.js",
     "icon": "anycubic-cloud.svg",
-    "extIcon": "",
+    "extIcon": "https://raw.githubusercontent.com/hwiedermann/ioBroker.anycubic-cloud/main/admin/anycubic-cloud.svg",
     "enabled": true,
     "mode": "daemon",
     "type": "hardware",
@@ -49,11 +52,17 @@
       {
         "admin": ">=7.0.0"
       }
-    ]
+    ],
+    "title": "Anycubic Cloud",
+    "licenseInformation": {
+      "type": "free",
+      "license": "GPL-3.0-or-later"
+    }
   },
   "native": {
     "token": "",
-    "restMinuten": 10
+    "restMinuten": 10,
+    "tokenWarnTage": 14
   },
   "encryptedNative": [
     "token"
