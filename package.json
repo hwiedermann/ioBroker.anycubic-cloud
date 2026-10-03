@@ -1,6 +1,6 @@
 {
   "name": "iobroker.anycubic-cloud",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "ioBroker-Adapter für Anycubic-Drucker über die Anycubic-Cloud (Kobra S1 + ACE Pro)",
   "type": "module",
   "license": "GPL-3.0-or-later",
