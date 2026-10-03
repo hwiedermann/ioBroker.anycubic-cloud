@@ -1,0 +1,7 @@
+{
+  "REST resync every … minutes": "REST 每…分钟重新同步一次",
+  "Sets info.tokenWarnung and writes a warning to the log.": "设置 info.tokenWarnung 并将警告写入日志。",
+  "Slicer token (access_token)": "切片器令牌（access_token）",
+  "This adapter is read-only and sends no commands to the printer. The printer must be connected to the Anycubic cloud (not in pure LAN/offline mode). It needs the access token from Anycubic Slicer Next (valid for about 90 days). How to obtain it is described in the adapter's documentation (README).": "该适配器是只读的，不会向打印机发送命令。打印机必须连接到 Anycubic 云（不是纯 LAN/离线模式）。它需要来自 Anycubic Slicer Next 的访问令牌（有效期约为 90 天）。适配器的文档 (README) 中描述了如何获取它。",
+  "Warn before token expiry (days)": "令牌到期前发出警告（天）"
+}

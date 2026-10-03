@@ -5,20 +5,43 @@
     "news": {
       "0.2.0": {
         "en": "First public beta: robust reconnect with backoff, plain-text status, dead-man watchdog, token-expiry warning",
-        "de": "Erste öffentliche Beta: robuster Reconnect mit Backoff, Klartext-Status, Totmann-Wächter, Token-Ablauf-Warnung"
-      },
-      "0.1.2": {
-        "en": "First version: reads printer status, print job and ACE (filament usage per slot) over the Anycubic cloud, read-only",
-        "de": "Erste Version: liest Druckerstatus, Druckauftrag und ACE (Filamentverbrauch je Slot) über die Anycubic-Cloud, nur lesend"
+        "de": "Erste öffentliche Beta: robuster Reconnect mit Backoff, Klartext-Status, Totmann-Wächter, Token-Ablauf-Warnung",
+        "ru": "Первая публичная бета-версия: надежное повторное подключение с откатом, текстовый статус, сторожевой таймер, предупреждение об истечении срока действия токена.",
+        "pt": "Primeiro beta público: reconexão robusta com espera, status de texto simples, cão de guarda de homem morto, aviso de expiração de token",
+        "nl": "Eerste openbare bèta: robuust opnieuw verbinden met uitstel, status in platte tekst, dodemanswaakhond, waarschuwing voor het verlopen van tokens",
+        "fr": "Première version bêta publique : reconnexion robuste avec backoff, statut en texte brut, chien de garde d'homme mort, avertissement d'expiration de jeton",
+        "it": "Prima beta pubblica: riconnessione robusta con backoff, stato in testo semplice, watchdog dead-man, avviso di scadenza del token",
+        "es": "Primera versión beta pública: reconexión robusta con retroceso, estado de texto sin formato, vigilancia de hombre muerto, advertencia de vencimiento del token",
+        "pl": "Pierwsza publiczna wersja beta: solidne ponowne połączenie z wycofywaniem, status w postaci zwykłego tekstu, watchdog typu dead-man, ostrzeżenie o wygaśnięciu tokenu",
+        "uk": "Перша загальнодоступна бета-версія: надійне повторне підключення з відстрочкою, статус простого тексту, сторожовий таймер мертвої людини, попередження про закінчення терміну дії маркера",
+        "zh-cn": "首次公开测试版：具有退避功能的稳健重新连接、纯文本状态、死人看门狗、令牌过期警告"
       }
     },
     "titleLang": {
       "en": "Anycubic Cloud",
-      "de": "Anycubic Cloud"
+      "de": "Anycubic Cloud",
+      "ru": "Anycubic Cloud",
+      "pt": "Anycubic Cloud",
+      "nl": "Anycubic Cloud",
+      "fr": "Anycubic Cloud",
+      "it": "Anycubic Cloud",
+      "es": "Anycubic Cloud",
+      "pl": "Anycubic Cloud",
+      "uk": "Anycubic Cloud",
+      "zh-cn": "Anycubic Cloud"
     },
     "desc": {
       "en": "Anycubic printers (Kobra S1 + ACE Pro) via the Anycubic cloud, read-only",
-      "de": "Anycubic-Drucker (Kobra S1 + ACE Pro) über die Anycubic-Cloud, nur lesend"
+      "de": "Anycubic-Drucker (Kobra S1 + ACE Pro) über die Anycubic-Cloud, nur lesend",
+      "ru": "Принтеры Anycubic (Kobra S1 + ACE Pro) через облако Anycubic, только чтение",
+      "pt": "Impressoras Anycubic (Kobra S1 + ACE Pro) através da nuvem Anycubic, somente leitura",
+      "nl": "Anycubic-printers (Kobra S1 + ACE Pro) via de Anycubic-cloud, alleen-lezen",
+      "fr": "Imprimantes Anycubic (Kobra S1 + ACE Pro) via le cloud Anycubic, en lecture seule",
+      "it": "Stampanti Anycubic (Kobra S1 + ACE Pro) tramite il cloud Anycubic, di sola lettura",
+      "es": "Impresoras Anycubic (Kobra S1 + ACE Pro) a través de la nube Anycubic, de solo lectura",
+      "pl": "Drukarki Anycubic (Kobra S1 + ACE Pro) za pośrednictwem chmury Anycubic, tylko do odczytu",
+      "uk": "Принтери Anycubic (Kobra S1 + ACE Pro) через хмару Anycubic, лише читання",
+      "zh-cn": "Anycubic 打印机 (Kobra S1 + ACE Pro) 通过 Anycubic 云，只读"
     },
     "authors": [
       "Hendrik"
@@ -50,14 +73,14 @@
     ],
     "globalDependencies": [
       {
-        "admin": ">=7.0.0"
+        "admin": ">=7.6.17"
       }
     ],
-    "title": "Anycubic Cloud",
     "licenseInformation": {
       "type": "free",
       "license": "GPL-3.0-or-later"
-    }
+    },
+    "nogit": true
   },
   "native": {
     "token": "",
