@@ -170,6 +170,16 @@ Requirements: Node.js >= 22, js-controller >= 6, Admin >= 7.6.17.
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+* Token helper script moved to `tools/` (no longer part of the npm package); README and admin page link to the guide on GitHub
+* CI: integration test runs on Node 22/24/26 on Linux, Windows and macOS; releases via the official ioBroker deploy action with trusted publishing
+
+### 0.2.1 (2026-10-03)
+
+* Repository compliance: metadata, translations for all required languages, official CI workflow, English-only README with German docs under `docs/de/`, ESLint config
+* Releases are published via GitHub Actions with npm provenance (trusted publishing)
+
 ### 0.2.0 (2026-10-03)
 
 * First public beta: robust reconnect with backoff, plain-text status (`info.status`), dead-man watchdog, token-expiry warning (`info.tokenWarnung`), single-flight REST resync
