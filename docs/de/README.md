@@ -62,6 +62,6 @@ der manuelle Weg) steht in der englischen [README.md](../../README.md).
 
 Copyright (c) 2026 Hendrik <iobroker@hwiedermann.de>
 
-Lizenziert unter **GPL-3.0-or-later**; der vollständige Lizenztext steht in der Datei
-[LICENSE](../../LICENSE). Baut auf Erkenntnissen aus dem Projekt
+Lizenziert unter **GPL-3.0-or-later**; der Lizenzhinweis steht in
+[LICENSE](../../LICENSE), der vollständige Lizenztext in [COPYING](../../COPYING). Baut auf Erkenntnissen aus dem Projekt
 [`anycubic-cloud-api`](https://pypi.org/project/anycubic-cloud-api/) (GPL-3.0) auf.
