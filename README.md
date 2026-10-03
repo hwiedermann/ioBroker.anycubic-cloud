@@ -360,6 +360,10 @@ Requirements: Node.js ≥ 22, js-controller ≥ 6, Admin ≥ 7.
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+
+### **WORK IN PROGRESS**
+- (ioBroker-Bot) Adapter requires admin >= 7.8.23 now.
+
 ### 0.2.0 (2026-10-03)
 * First public beta: robust reconnect with backoff, plain-text status (`info.status`), dead-man watchdog, token-expiry warning (`info.tokenWarnung`), single-flight REST resync
 
