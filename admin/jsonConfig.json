@@ -24,10 +24,11 @@
       "xl": 4
     },
     "token": {
-      "type": "password",
+      "type": "text",
       "label": "Slicer token (access_token)",
-      "repeat": false,
-      "visible": true,
+      "minRows": 3,
+      "maxRows": 6,
+      "trim": true,
       "xs": 12,
       "sm": 12,
       "md": 12,
