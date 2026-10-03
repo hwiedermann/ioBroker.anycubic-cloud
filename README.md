@@ -26,14 +26,19 @@ Pro Drucker unter `anycubic-cloud.0.<id>`:
 > Hinweis: Temperaturen meldet der Drucker nur häufig, solange Slicer oder App zusehen. Sonst
 > kommen sie selten; der Adapter gleicht zusätzlich in einem Intervall über die Cloud ab.
 
-## Was er (bewusst) nicht liefert
+## Was (noch) nicht enthalten ist
 
-- **Kein Videobild / keine Kamera.** Die Cloud-Kamera des Druckers läuft über WebRTC (Agora) und
-  liefert keine Einzelbilder; der Adapter bindet bewusst **kein** Kamerabild ein.
-- **Keine Befehle an den Drucker.** Pause, Fortsetzen, Stopp, Licht oder ACE-Trocknen wären über die
-  Cloud technisch **möglich** (`sendOrder`), sind in diesem Adapter aber **bewusst nicht enthalten** —
-  er ist rein lesend. Ein optionales Schreib-Modul (mit Bestätigung, abschaltbar) ist denkbar, aber
-  nicht Teil dieser Version.
+Der Adapter ist derzeit **rein lesend**. Die folgenden Punkte fehlen bislang bewusst, können aber bei
+entsprechendem Bedarf ergänzt werden, soweit technisch sinnvoll möglich:
+
+- **Steuerung des Druckers (Pause, Fortsetzen, Stopp, Licht, ACE-Trocknen).** Über die Cloud
+  technisch **möglich** (`sendOrder`), aber **noch nicht enthalten**. Das lässt sich bei Bedarf als
+  optionales, abschaltbares Schreib-Modul mit Bestätigung nachrüsten. **Derzeit ist das Steuern des
+  Druckers über den Slicer oder die Anycubic-App aber der sinnvollere Weg** — unmittelbareres
+  Feedback und kein Umweg über einen Schreibzugriff aus der Hausautomation.
+- **Videobild / Kamera.** Die Cloud-Kamera des Druckers läuft über WebRTC (Agora) und liefert keine
+  Einzelbilder; ein Kamerabild ist **noch nicht enthalten**. Ob und wie sich das sinnvoll einbinden
+  lässt, wird bei Bedarf geprüft — fürs Zusehen ist derzeit die Anycubic-App der direkte Weg.
 
 ## Verläufe / Historie
 
@@ -184,14 +189,19 @@ Per printer under `anycubic-cloud.0.<id>`:
 > Note: the printer reports temperatures frequently only while the slicer or app are watching.
 > Otherwise they arrive rarely; the adapter additionally resyncs via the cloud on an interval.
 
-## What it deliberately does not provide
+## What is not (yet) included
 
-- **No video image / no camera.** The printer's cloud camera uses WebRTC (Agora) and provides no
-  still images; the adapter deliberately includes **no** camera image.
-- **No commands to the printer.** Pause, resume, stop, light or ACE drying would be technically
-  **possible** via the cloud (`sendOrder`), but are **deliberately not included** in this adapter —
-  it is read-only. An optional write module (with confirmation, switchable) is conceivable but not
-  part of this version.
+The adapter is currently **read-only**. The following is deliberately missing for now, but can be
+added when there is demand, as far as it is technically sensible:
+
+- **Controlling the printer (pause, resume, stop, light, ACE drying).** Technically **possible** via
+  the cloud (`sendOrder`), but **not yet included**. It can be added when needed as an optional,
+  switchable write module with confirmation. **For now, however, controlling the printer via the
+  slicer or the Anycubic app is the more sensible way** — more immediate feedback and no detour
+  through a write access from home automation.
+- **Video image / camera.** The printer's cloud camera uses WebRTC (Agora) and provides no still
+  images; a camera image is **not yet included**. Whether and how it can be integrated sensibly will
+  be examined when needed — for watching, the Anycubic app is currently the direct way.
 
 ## History / trends
 
