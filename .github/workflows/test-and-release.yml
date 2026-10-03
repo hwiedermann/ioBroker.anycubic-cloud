@@ -54,3 +54,7 @@ jobs:
       - run: npm run build
       - name: Publish to npm (trusted publishing + provenance)
         run: npm publish --provenance --access public
+      - name: Create GitHub release
+        run: gh release create "$GITHUB_REF_NAME" --verify-tag --title "$GITHUB_REF_NAME" --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}
