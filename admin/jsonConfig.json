@@ -5,8 +5,8 @@
     "hinweis": {
       "type": "staticText",
       "text": {
-        "de": "Dieser Adapter liest nur und schickt keine Befehle an den Drucker. Nötig ist der Zugangs-Token aus Anycubic Slicer Next (rund 90 Tage gültig). Wie man ihn bekommt, steht in der Anleitung des Adapters (README).",
-        "en": "This adapter is read-only and sends no commands to the printer. It needs the access token from Anycubic Slicer Next (valid for about 90 days). How to obtain it is described in the adapter's documentation (README)."
+        "de": "Dieser Adapter liest nur und schickt keine Befehle an den Drucker. Der Drucker muss mit der Anycubic-Cloud verbunden sein (nicht im reinen LAN-/Offline-Modus). Nötig ist der Zugangs-Token aus Anycubic Slicer Next (rund 90 Tage gültig). Wie man ihn bekommt, steht in der Anleitung des Adapters (README).",
+        "en": "This adapter is read-only and sends no commands to the printer. The printer must be connected to the Anycubic cloud (not in pure LAN/offline mode). It needs the access token from Anycubic Slicer Next (valid for about 90 days). How to obtain it is described in the adapter's documentation (README)."
       },
       "xs": 12, "sm": 12, "md": 12, "lg": 12, "xl": 12
     },

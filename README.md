@@ -12,6 +12,17 @@ und schickt **keine** Befehle an den Drucker. Im Code gibt es bewusst weder `pub
 > oder der Zugang gesperrt werden. Bisher nur mit **einem** Gerät (Kobra S1 + ACE 2 Pro, eine
 > Firmware, ein Konto) getestet. Keine Gewähr, keine Verbindung zu Anycubic.
 
+## Voraussetzung: Cloud-Modus
+
+Der Drucker muss mit der **Anycubic-Cloud verbunden** sein — so wie bei der Nutzung über die
+Anycubic-App oder den angemeldeten Slicer. Der Adapter spricht **ausschließlich mit der Cloud**,
+nicht direkt mit dem Drucker im Heimnetz.
+
+Im **reinen LAN-/Offline-Modus** des Druckers (lokal, ohne Cloud) funktioniert der Adapter **nicht** —
+dort ist der Drucker über die Cloud nicht erreichbar. Geprüft ist das mit dem **Kobra S1**; bei ihm
+schließt der LAN-Modus die Cloud- und App-Nutzung aus. Andere Anycubic-Modelle verhalten sich
+vermutlich ebenso, das ist aber **nicht getestet**.
+
 ## Was er liefert
 
 Pro Drucker unter `anycubic-cloud.0.<id>`:
@@ -26,19 +37,26 @@ Pro Drucker unter `anycubic-cloud.0.<id>`:
 > Hinweis: Temperaturen meldet der Drucker nur häufig, solange Slicer oder App zusehen. Sonst
 > kommen sie selten; der Adapter gleicht zusätzlich in einem Intervall über die Cloud ab.
 
-## Was (noch) nicht enthalten ist
+## Was (noch) nicht geht
 
-Der Adapter ist derzeit **rein lesend**. Die folgenden Punkte fehlen bislang bewusst, können aber bei
-entsprechendem Bedarf ergänzt werden, soweit technisch sinnvoll möglich:
+Hier sind zwei Dinge zu unterscheiden: was **noch nicht gebaut** ist (aber möglich wäre) und was
+**über die Cloud grundsätzlich nicht** geht.
+
+### Noch nicht enthalten (möglich, bei Bedarf baubar)
 
 - **Steuerung des Druckers (Pause, Fortsetzen, Stopp, Licht, ACE-Trocknen).** Über die Cloud
-  technisch **möglich** (`sendOrder`), aber **noch nicht enthalten**. Das lässt sich bei Bedarf als
-  optionales, abschaltbares Schreib-Modul mit Bestätigung nachrüsten. **Derzeit ist das Steuern des
-  Druckers über den Slicer oder die Anycubic-App aber der sinnvollere Weg** — unmittelbareres
-  Feedback und kein Umweg über einen Schreibzugriff aus der Hausautomation.
-- **Videobild / Kamera.** Die Cloud-Kamera des Druckers läuft über WebRTC (Agora) und liefert keine
-  Einzelbilder; ein Kamerabild ist **noch nicht enthalten**. Ob und wie sich das sinnvoll einbinden
-  lässt, wird bei Bedarf geprüft — fürs Zusehen ist derzeit die Anycubic-App der direkte Weg.
+  technisch **möglich** (`sendOrder`), aber in dieser Version **noch nicht enthalten**. Lässt sich bei
+  Bedarf als optionales, abschaltbares Schreib-Modul mit Bestätigung nachrüsten. **Derzeit ist das
+  Steuern über den Slicer oder die Anycubic-App aber der sinnvollere Weg** — unmittelbareres Feedback
+  und kein Umweg über einen Schreibzugriff aus der Hausautomation.
+
+### Über die Cloud grundsätzlich nicht (kommt also auch später nicht)
+
+- **Videobild / Kamera-Einzelbild.** Die Anycubic-Cloud liefert **keine Einzelbilder (Snapshots)** —
+  nur einen kurzlebigen Live-Stream über WebRTC (Agora). Ein stehendes Kamerabild als Datenpunkt ist
+  darüber **nicht möglich**; das ist eine Grenze der Cloud, nicht etwas, das noch nachkommt. (Ein
+  lokales Bild gäbe es nur im LAN-Modus des Druckers, den dieser Adapter nicht nutzt.) Fürs Zusehen
+  ist die Anycubic-App der direkte Weg.
 
 ## Verläufe / Historie
 
@@ -175,6 +193,17 @@ ioBroker adapter for Anycubic printers (tested with **Kobra S1 + ACE 2 Pro**) vi
 > far tested with **one** device only (Kobra S1 + ACE 2 Pro, one firmware, one account). No warranty,
 > no affiliation with Anycubic.
 
+## Requirement: cloud mode
+
+The printer must be **connected to the Anycubic cloud** — as it is when used via the Anycubic app or
+the logged-in slicer. The adapter talks **exclusively to the cloud**, not directly to the printer on
+the local network.
+
+In the printer's **pure LAN / offline mode** (local, without cloud) the adapter does **not** work —
+the printer is not reachable via the cloud there. This was verified with the **Kobra S1**, where LAN
+mode excludes cloud and app use. Other Anycubic models probably behave the same, but this is **not
+tested**.
+
 ## What it provides
 
 Per printer under `anycubic-cloud.0.<id>`:
@@ -189,19 +218,26 @@ Per printer under `anycubic-cloud.0.<id>`:
 > Note: the printer reports temperatures frequently only while the slicer or app are watching.
 > Otherwise they arrive rarely; the adapter additionally resyncs via the cloud on an interval.
 
-## What is not (yet) included
+## What does not (yet) work
 
-The adapter is currently **read-only**. The following is deliberately missing for now, but can be
-added when there is demand, as far as it is technically sensible:
+Two things to distinguish: what is **not yet built** (but would be possible) and what is
+**fundamentally not possible via the cloud**.
+
+### Not yet included (possible, can be added on demand)
 
 - **Controlling the printer (pause, resume, stop, light, ACE drying).** Technically **possible** via
-  the cloud (`sendOrder`), but **not yet included**. It can be added when needed as an optional,
-  switchable write module with confirmation. **For now, however, controlling the printer via the
-  slicer or the Anycubic app is the more sensible way** — more immediate feedback and no detour
-  through a write access from home automation.
-- **Video image / camera.** The printer's cloud camera uses WebRTC (Agora) and provides no still
-  images; a camera image is **not yet included**. Whether and how it can be integrated sensibly will
-  be examined when needed — for watching, the Anycubic app is currently the direct way.
+  the cloud (`sendOrder`), but **not yet included** in this version. Can be added on demand as an
+  optional, switchable write module with confirmation. **For now, however, controlling via the slicer
+  or the Anycubic app is the more sensible way** — more immediate feedback and no detour through a
+  write access from home automation.
+
+### Fundamentally not possible via the cloud (so it will not come later either)
+
+- **Video image / camera still.** The Anycubic cloud provides **no still images (snapshots)** — only
+  a short-lived live stream via WebRTC (Agora). A static camera image as a data point is **not
+  possible** this way; that is a limitation of the cloud, not something still to come. (A local image
+  would only be available in the printer's LAN mode, which this adapter does not use.) For watching,
+  the Anycubic app is the direct way.
 
 ## History / trends
 
