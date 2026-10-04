@@ -12,7 +12,7 @@ Reads the status of Anycubic 3D printers and the ACE Pro filament box from the A
 temperatures, fans, ACE slots and the filament used per slot. The adapter is read-only and sends no
 commands to the printer.
 
-Tested with a Kobra S1 and ACE 2 Pro. Other models that work with the Anycubic app should work as well;
+Tested with a [Kobra S1](https://www.anycubic.com/products/kobra-s1-combo) and ACE 2 Pro, manufacturer: [Anycubic](https://www.anycubic.com). Other models that work with the Anycubic app should work as well;
 feedback is welcome.
 
 > [!WARNING]

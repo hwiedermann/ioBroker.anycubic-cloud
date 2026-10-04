@@ -8,7 +8,7 @@ Liest den Zustand von Anycubic-3D-Druckern und der Filamentbox ACE Pro aus der A
 Temperaturen, Lüfter, ACE-Slots und den Filamentverbrauch je Slot. Der Adapter liest nur und schickt keine
 Befehle an den Drucker.
 
-Getestet mit Kobra S1 und ACE 2 Pro. Andere Modelle, die mit der Anycubic-App laufen, sollten ebenfalls
+Getestet mit [Kobra S1](https://www.anycubic.com/products/kobra-s1-combo) und ACE 2 Pro, Hersteller: [Anycubic](https://www.anycubic.com). Andere Modelle, die mit der Anycubic-App laufen, sollten ebenfalls
 funktionieren; Rückmeldungen sind willkommen.
 
 > [!WARNING]
