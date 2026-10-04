@@ -82,6 +82,10 @@
       "uk": "Принтери Anycubic (Kobra S1 + ACE Pro) через хмару Anycubic, лише читання",
       "zh-cn": "Anycubic 打印机 (Kobra S1 + ACE Pro) 通过 Anycubic 云，只读"
     },
+    "docs": {
+      "en": "README.md",
+      "de": "docs/de/README.md"
+    },
     "authors": [
       "Hendrik <iobroker@hwiedermann.de>"
     ],
