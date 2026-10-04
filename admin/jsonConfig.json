@@ -41,10 +41,10 @@
       "min": 5,
       "max": 120,
       "xs": 12,
-      "sm": 6,
-      "md": 4,
-      "lg": 3,
-      "xl": 3
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
     },
     "tokenWarnDays": {
       "type": "number",
@@ -53,10 +53,10 @@
       "max": 60,
       "help": "Sets info.tokenExpiring and writes a warning to the log.",
       "xs": 12,
-      "sm": 6,
-      "md": 4,
-      "lg": 3,
-      "xl": 3
+      "sm": 12,
+      "md": 6,
+      "lg": 4,
+      "xl": 4
     }
   }
 }

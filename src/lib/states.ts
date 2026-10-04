@@ -82,13 +82,13 @@ const D: Record<string, Def> = {
         name: n('Remaining time', 'Restzeit'),
         type: 'number',
         role: 'value.interval',
-        unit: 'min',
+        unit: 'm',
     },
     'job.elapsedTime': {
         name: n('Elapsed time', 'Laufzeit'),
         type: 'number',
         role: 'value.interval',
-        unit: 'min',
+        unit: 'm',
     },
     'job.layer': { name: n('Layer', 'Schicht'), type: 'number', role: 'value' },
     'job.layerTotal': { name: n('Total layers', 'Schichten gesamt'), type: 'number', role: 'value' },
@@ -173,13 +173,13 @@ const D: Record<string, Def> = {
         name: n('Drying duration', 'Trocknen Dauer'),
         type: 'number',
         role: 'value.interval',
-        unit: 'min',
+        unit: 'm',
     },
     'ace.drying.remainingTime': {
         name: n('Drying remaining time', 'Trocknen Restzeit'),
         type: 'number',
         role: 'value.interval',
-        unit: 'min',
+        unit: 'm',
     },
 
     'message.lastCode': {
