@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "news": {
+      "0.3.1": {
+        "en": "Durations use the unit m of role value.interval (values still in minutes); responsive admin layout; documentation linked",
+        "de": "Zeitdauern nutzen die Einheit m der Rolle value.interval (Werte weiterhin in Minuten); responsives Admin-Layout; Dokumentation verlinkt",
+        "ru": "Длительности используют единицу m роли value.interval (значения по-прежнему в минутах); адаптивный макет админки; документация связана",
+        "pt": "As durações usam a unidade m da função value.interval (valores ainda em minutos); layout de admin responsivo; documentação vinculada",
+        "nl": "Tijdsduren gebruiken de eenheid m van rol value.interval (waarden nog steeds in minuten); responsieve admin-lay-out; documentatie gekoppeld",
+        "fr": "Les durées utilisent l'unité m du rôle value.interval (valeurs toujours en minutes) ; mise en page admin adaptative ; documentation liée",
+        "it": "Le durate usano l'unità m del ruolo value.interval (valori sempre in minuti); layout admin responsive; documentazione collegata",
+        "es": "Las duraciones usan la unidad m del rol value.interval (valores aún en minutos); diseño de admin adaptable; documentación enlazada",
+        "pl": "Czasy trwania używają jednostki m roli value.interval (wartości nadal w minutach); responsywny układ admina; podlinkowana dokumentacja",
+        "uk": "Тривалості використовують одиницю m ролі value.interval (значення й далі в хвилинах); адаптивний макет адмінки; документацію пов'язано",
+        "zh-cn": "时长使用角色 value.interval 的单位 m（数值仍为分钟）；管理界面响应式布局；已链接文档"
+      },
       "0.3.0": {
         "en": "BREAKING: state IDs and values are now English (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Old objects are deleted on the first start, the filament usage history is carried over. History/SQL/InfluxDB data stays with the old IDs, adapt scripts and visualizations. Compact mode supported. Token script renamed to `tools/get-token.ps1`.",
         "de": "BREAKING: Datenpunkte und Werte sind jetzt englisch (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Alte Objekte werden beim ersten Start gelöscht, der Filamentverbrauch wird übernommen. Daten von History/SQL/InfluxDB bleiben an den alten IDs, Skripte und Visualisierungen anpassen. Compact-Modus unterstützt. Token-Skript heißt jetzt `tools/get-token.ps1`.",
