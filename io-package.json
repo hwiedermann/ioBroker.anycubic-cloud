@@ -84,7 +84,7 @@
     "enabled": true,
     "mode": "daemon",
     "type": "hardware",
-    "compact": false,
+    "compact": true,
     "connectionType": "cloud",
     "dataSource": "push",
     "adminUI": {
@@ -110,8 +110,8 @@
   },
   "native": {
     "token": "",
-    "restMinuten": 10,
-    "tokenWarnTage": 14
+    "resyncMinutes": 10,
+    "tokenWarnDays": 14
   },
   "encryptedNative": [
     "token"
@@ -125,7 +125,10 @@
       "_id": "info",
       "type": "channel",
       "common": {
-        "name": "Information"
+        "name": {
+          "en": "Information",
+          "de": "Information"
+        }
       },
       "native": {}
     },
@@ -134,7 +137,10 @@
       "type": "state",
       "common": {
         "role": "indicator.connected",
-        "name": "MQTT verbunden",
+        "name": {
+          "en": "MQTT connected",
+          "de": "MQTT verbunden"
+        },
         "type": "boolean",
         "read": true,
         "write": false,
