@@ -1,78 +1,67 @@
-/* REST-Zugriff auf die Anycubic-Cloud: Token-Tausch und lesende Abfragen.
-   Nach anycubic-cloud-api, api/base.py (_fetch_ext_resp, _get_user_token_with_access_token). */
-import { API_ROOT, ENDPUNKT, RATE_LIMIT_MARKER } from './konstanten.ts';
-import { kopfzeilen, type Kennungen } from './signatur.ts';
+/* REST access to the Anycubic cloud: token exchange and read-only requests.
+   After anycubic-cloud-api api/base.py (_fetch_ext_resp, _get_user_token_with_access_token). */
 import { setTimeout as delay } from 'node:timers/promises';
+import { API_ROOT, ENDPOINT, RATE_LIMIT_MARKERS } from './constants.ts';
+import { signedHeaders, type Credentials } from './signature.ts';
 
-type Endpunkt = (typeof ENDPUNKT)[keyof typeof ENDPUNKT];
-export interface Antwort<T = any> {
-    /**
-     *
-     */
+type Endpoint = (typeof ENDPOINT)[keyof typeof ENDPOINT];
+export interface Response<T = any> {
     code?: number;
-    /**
-     *
-     */
     msg?: string;
-    /**
-     *
-     */
     data: T;
 }
 
 export class AnycubicRest {
     userToken?: string;
-    private kennungen: Kennungen;
+    private credentials: Credentials;
     private accessToken: string;
-    constructor(kennungen: Kennungen, accessToken: string) {
-        this.kennungen = kennungen;
+    constructor(credentials: Credentials, accessToken: string) {
+        this.credentials = credentials;
         this.accessToken = accessToken;
     }
 
-    async aufruf<T = any>(
-        [methode, pfad]: Endpunkt,
+    async request<T = any>(
+        [method, path]: Endpoint,
         opt: {
             query?: Record<string, string | number>;
             body?: unknown;
-            mitToken?: boolean;
+            withToken?: boolean;
         } = {},
-    ): Promise<Antwort<T>> {
-        const url = new URL(API_ROOT + pfad);
+    ): Promise<Response<T>> {
+        const url = new URL(API_ROOT + path);
         for (const [k, v] of Object.entries(opt.query ?? {})) {
             url.searchParams.set(k, String(v));
         }
         const r = await fetch(url, {
-            method: methode,
-            headers: kopfzeilen(this.kennungen, opt.mitToken === false ? undefined : this.userToken),
-            body: methode === 'POST' ? JSON.stringify(opt.body ?? {}) : undefined,
+            method,
+            headers: signedHeaders(this.credentials, opt.withToken === false ? undefined : this.userToken),
+            body: method === 'POST' ? JSON.stringify(opt.body ?? {}) : undefined,
         });
         const text = await r.text();
         try {
             return JSON.parse(text);
         } catch {
-            throw new Error(`${pfad}: HTTP ${r.status}, keine JSON-Antwort (${text.slice(0, 80)})`);
+            throw new Error(`${path}: HTTP ${r.status}, no JSON response (${text.slice(0, 80)})`);
         }
     }
 
-    /* Slicer-access_token → User-Token. Rate-Limit: zweiter Tausch binnen ~3 s wird abgelehnt → 6 s warten, max. 3× */
-    async anmelden(): Promise<void> {
-        for (let versuch = 0; versuch < 4; versuch++) {
-            const a = await this.aufruf<{
-                token: string;
-            }>(ENDPUNKT.tokenTausch, {
+    /* Slicer access_token → user token. A second exchange within ~3 s is rate limited, so wait 6 s, at most 3 times */
+    async login(): Promise<void> {
+        for (let attempt = 0; attempt < 4; attempt++) {
+            const a = await this.request<{ token: string }>(ENDPOINT.tokenExchange, {
                 body: { device_type: 'pcf', access_token: this.accessToken },
-                mitToken: false,
+                withToken: false,
             });
             if (a?.data?.token) {
                 this.userToken = a.data.token;
                 return;
             }
-            if (RATE_LIMIT_MARKER.some(m => String(a?.msg).includes(m))) {
+            if (RATE_LIMIT_MARKERS.some(m => String(a?.msg).includes(m))) {
                 await delay(6000);
                 continue;
             }
-            throw new Error(`Token-Tausch abgelehnt: ${a?.msg ?? 'keine Meldung'} (code ${a?.code})`);
+            throw new Error(`token exchange rejected: ${a?.msg ?? 'no message'} (code ${a?.code})`);
         }
-        throw new Error('Token-Tausch: Rate-Limit hält an');
+        throw new Error('token exchange: rate limit persists');
     }
 }

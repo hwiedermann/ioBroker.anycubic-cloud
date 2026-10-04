@@ -3,10 +3,10 @@ import config from '@iobroker/eslint-config';
 export default [
     ...config,
     {
-        ignores: ['build/', 'test/', 'admin/words.js', '.dev-server/'],
+        ignores: ['build/', 'test/', '.dev-server/'],
     },
     {
-        // Diese Doku-/Stilregeln bewusst gelockert (kleiner, gut kommentierter Adapter):
+        // documentation rules relaxed for this small adapter
         rules: {
             'jsdoc/require-jsdoc': 'off',
             'jsdoc/require-param': 'off',

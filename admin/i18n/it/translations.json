@@ -1,8 +1,0 @@
-{
-  "Guide and token helper script (GitHub)": "Guida e script di supporto token (GitHub)",
-  "REST resync every … minutes": "REST si sincronizza ogni... minuti",
-  "Sets info.tokenWarnung and writes a warning to the log.": "Imposta info.tokenWarnung e scrive un avviso nel registro.",
-  "Slicer token (access_token)": "Token del filtro dei dati (access_token)",
-  "This adapter is read-only and sends no commands to the printer. The printer must be connected to the Anycubic cloud (not in pure LAN/offline mode). It needs the access token from Anycubic Slicer Next (valid for about 90 days). How to obtain it is described in the adapter's documentation (README).": "Questo adattatore è di sola lettura e non invia comandi alla stampante. La stampante deve essere connessa al cloud Anycubic (non in modalità pura LAN/offline). Richiede il token di accesso di Anycubic Slicer Next (valido per circa 90 giorni). Come ottenerlo è descritto nella documentazione dell'adattatore (README).",
-  "Warn before token expiry (days)": "Avvisa prima della scadenza del token (giorni)"
-}
