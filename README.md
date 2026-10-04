@@ -96,7 +96,7 @@ updated by the REST resync.
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.3.0 (2026-10-04)
 
 - (hwiedermann) BREAKING: State IDs and values are now English, e.g. `zustand` is now `status` and `temp.duese` is now `temperature.nozzle`. Old objects are deleted on the first start, the filament usage history is carried over. History, SQL or InfluxDB data stays with the old IDs. Adapt scripts and visualizations.
 - (hwiedermann) Compact mode supported
