@@ -109,9 +109,9 @@ const parse = async (a: Adapter, id: string): Promise<any> => {
     }
 };
 
-/* Reads the values worth keeping per printer, then deletes all old objects. Returns an empty map if nothing is old. */
-export async function migrate(a: Adapter): Promise<Map<string, Migrated>> {
-    const result = new Map<string, Migrated>();
+/* Saves the values worth keeping per printer under the new IDs (save), then deletes all old objects.
+   Saving comes first, so nothing is lost if the adapter stops right after the migration. */
+export async function migrate(a: Adapter, save: (device: string, m: Migrated) => Promise<void>): Promise<void> {
     const prefix = `${a.namespace}.`;
     const all = Object.values(await a.getAdapterObjectsAsync());
     const devices = all.filter(o => o.type === 'device').map(o => o._id.slice(prefix.length));
@@ -128,13 +128,13 @@ export async function migrate(a: Adapter): Promise<Map<string, Migrated>> {
         }
     }
     if (!doomed.length) {
-        return result;
+        return;
     }
     for (const dev of devices) {
         const memo = await parse(a, `${dev}.job.merker`);
         const last = await parse(a, `${dev}.verbrauch.letzter`);
         const history = await parse(a, `${dev}.verbrauch.verlauf`);
-        result.set(dev, {
+        await save(dev, {
             memo: memo ? memoFromOld(memo) : undefined,
             last: last ? usageFromOld(last) : undefined,
             history: Array.isArray(history) ? history.map(usageFromOld) : undefined,
@@ -146,5 +146,4 @@ export async function migrate(a: Adapter): Promise<Map<string, Migrated>> {
         await a.delObjectAsync(id).catch(e => a.log.debug(`migration: could not delete ${id}: ${e.message}`));
     }
     a.log.info(`Migrated to the English state IDs of 0.3.0, removed ${doomed.length} old objects`);
-    return result;
 }

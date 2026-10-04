@@ -44,7 +44,6 @@ class AnycubicCloud extends utils.Adapter {
     private client?: MqttClient;
     private printers = new Map<string, Printer>(); // key = cloud key (part of the topic)
     private created = new Set<string>();
-    private migrated = new Map<string, Migrated>();
     private resyncTimer?: ioBroker.Interval;
     private tickTimer?: ioBroker.Interval;
     private stopped = false;
@@ -70,7 +69,7 @@ class AnycubicCloud extends utils.Adapter {
     }
 
     private async onReady() {
-        this.migrated = await migrate(this);
+        await migrate(this, (device, m) => this.saveMigrated(device, m));
         await this.stateWithValue('info.status', 'starting', {
             name: { en: 'Status', de: 'Status' },
             type: 'string',
@@ -287,9 +286,8 @@ class AnycubicCloud extends utils.Adapter {
             common: { name: d.name ?? id },
             native: { machine_type: d.machine_type },
         });
-        const m = this.migrated.get(id);
-        const memo = m?.memo ?? (await this.readJson(`${id}.job.internal`));
-        const history = m?.history ?? (await this.readJson(`${id}.usage.history`));
+        const memo = await this.readJson(`${id}.job.internal`);
+        const history = await this.readJson(`${id}.usage.history`);
         const p: Printer = {
             id,
             key: d.key,
@@ -298,18 +296,21 @@ class AnycubicCloud extends utils.Adapter {
             model: new PrinterModel({ ...(memo ?? {}), history: Array.isArray(history) ? history : [] }),
         };
         this.printers.set(d.key, p);
-        if (m) {
-            /* carry the history over right away, otherwise it would only reappear after the next print */
-            const carried: Write[] = [];
-            if (m.history) {
-                carried.push({ id: 'usage.history', value: JSON.stringify(m.history) });
-            }
-            if (m.last) {
-                carried.push({ id: 'usage.last', value: JSON.stringify(m.last) });
-            }
-            await this.write(p, carried);
-        }
         return p;
+    }
+
+    private async saveMigrated(device: string, m: Migrated) {
+        const values: [string, unknown][] = [
+            ['job.internal', m.memo],
+            ['usage.last', m.last],
+            ['usage.history', m.history],
+        ];
+        for (const [rel, value] of values) {
+            if (value !== undefined) {
+                await this.createObject(device, rel);
+                await this.setState(`${device}.${rel}`, JSON.stringify(value), true);
+            }
+        }
     }
 
     private async onMessage(topic: string, buf: Buffer) {
