@@ -1,67 +1,94 @@
-# ioBroker.anycubic-cloud (Deutsch)
+# ioBroker.anycubic-cloud
 
-> 🇬🇧 The primary documentation is in English: [README.md](../../README.md).
+[English documentation](../../README.md)
 
-ioBroker-Adapter für Anycubic-Drucker (getestet mit **Kobra S1 + ACE 2 Pro**) über die
-**Anycubic-Cloud**. Der Adapter ist **rein lesend**: Er bildet den Druckerzustand in ioBroker ab und
-schickt **keine** Befehle an den Drucker. Im Code gibt es bewusst weder `publish` noch `sendOrder`.
+## Beschreibung
 
-Hersteller/Gerät: [Anycubic Kobra S1](https://www.anycubic.com/products/kobra-s1-combo) · [Anycubic](https://www.anycubic.com)
+Liest den Zustand von Anycubic-3D-Druckern und der Filamentbox ACE Pro aus der Anycubic-Cloud: Druckauftrag,
+Temperaturen, Lüfter, ACE-Slots und den Filamentverbrauch je Slot. Der Adapter liest nur und schickt keine
+Befehle an den Drucker.
 
-> ⚠️ **Beta, inoffiziell, auf eigenes Risiko.** Anycubic bietet keine offene Schnittstelle; der
-> Adapter nutzt denselben Weg wie der Slicer und greift dafür zur Laufzeit auf Kennungen und
-> Zertifikate von Anycubic zu. Ändert Anycubic etwas, kann der Adapter ausfallen oder der Zugang
-> gesperrt werden. Bisher nur mit **einem** Gerät getestet (Kobra S1 + ACE 2 Pro). Keine Gewähr,
-> keine Verbindung zu Anycubic.
+Getestet mit Kobra S1 und ACE 2 Pro. Andere Modelle, die mit der Anycubic-App laufen, sollten ebenfalls
+funktionieren; Rückmeldungen sind willkommen.
 
-## Voraussetzung: Cloud-Modus
+> [!WARNING]
+> Inoffiziell. Anycubic hat keine offene Schnittstelle. Der Adapter nutzt dieselben Cloud-Aufrufe wie
+> Anycubic Slicer Next und lädt die App-Kennungen und Zertifikate zur Laufzeit aus dem Open-Source-Projekt
+> [anycubic-cloud-api](https://pypi.org/project/anycubic-cloud-api/). Ändert Anycubic die Cloud, kann der
+> Adapter ausfallen.
 
-Der Drucker muss mit der **Anycubic-Cloud verbunden** sein — so wie bei der Nutzung über die
-Anycubic-App oder den angemeldeten Slicer. Der Adapter spricht **ausschließlich mit der Cloud**, nicht
-direkt mit dem Drucker im Heimnetz. Im **reinen LAN-/Offline-Modus** funktioniert der Adapter
-**nicht**. Geprüft mit dem **Kobra S1**; andere Modelle verhalten sich vermutlich ebenso, das ist aber
-nicht getestet.
+Der Drucker muss mit der Anycubic-Cloud verbunden sein. Im reinen LAN-Modus ist er nicht erreichbar.
 
-## Was er liefert
+## Installation
 
-Pro Drucker unter `anycubic-cloud.0.<id>`:
+Der Adapter ist noch nicht im ioBroker-Repository. Installation von npm:
 
-- **Zustand** (`zustand`): frei, lädt, prüft, nivelliert, heizt, druckt, pausiert, setzt_fort, fertig, bricht_ab, abgebrochen, fehler
-- **Druckauftrag** (`job.*`): Datei, Fortschritt %, Restzeit, Laufzeit, Schicht/Schichten, Filament (mm und g), Start/Ende, Pausegrund
-- **Temperaturen** (`temp.*`) und **Lüfter** (`luefter.*`)
-- **ACE** (`ace.*`): Temperatur, Feuchte, geladener Slot, Trocknung; je Slot Farbe, Material, SKU und Restmenge. Slots ohne RFID werden als `manuell` markiert, ihr Prozentwert bleibt leer.
-- **Filamentverbrauch je Slot** (`verbrauch.letzter`, `verbrauch.verlauf`): nach jedem Druck, bei Abbruch hochgerechnet.
-- **Meldungen/Ereignisse** (`meldung.*`, `ereignis.fertig`) sowie `info.connection` und die Resttage des Tokens.
+```bash
+iobroker url iobroker.anycubic-cloud
+```
 
-## Was (noch) nicht geht
+Voraussetzungen: Node.js ab 22.18, js-controller ab 6.0.11, Admin ab 7.6.20.
 
-- **Steuerung des Druckers (Pause, Fortsetzen, Stopp, Licht, ACE-Trocknen):** über die Cloud
-  technisch möglich (`sendOrder`), aber **noch nicht enthalten**. Derzeit ist das Steuern über Slicer
-  oder App der sinnvollere Weg.
-- **Videobild / Kamera-Einzelbild:** Die Cloud liefert **keine Einzelbilder**, nur einen kurzlebigen
-  WebRTC-Live-Stream. Ein stehendes Kamerabild als Datenpunkt ist darüber **nicht möglich** — das ist
-  eine Grenze der Cloud, kein „noch nicht".
+## Konfiguration
 
-## Verläufe / Historie
+| Einstellung | Bedeutung |
+| --- | --- |
+| Slicer-Token | Zugangs-Token von Anycubic Slicer Next, siehe unten |
+| REST-Abgleich | Abstand des vollständigen Abgleichs über REST in Minuten (Standard 10) |
+| Token-Warnung | Tage vor Ablauf, ab denen `info.tokenExpiring` gesetzt wird (Standard 14) |
 
-- Der Adapter führt selbst einen kurzen Verlauf: `verbrauch.verlauf` (letzte 30 Drucke je Slot).
-- **Zeitreihen** (Temperatur, Fortschritt, Füllstand) übernehmen wie bei jedem State die Adapter
-  **History / SQL / InfluxDB**.
+### Token ermitteln
 
-## Einrichtung
+Anycubic bietet keine Anmeldung mit Benutzername und Passwort über die API. Der Adapter nutzt den
+Zugangs-Token, den Anycubic Slicer Next nach der Anmeldung speichert. Er gilt etwa 90 Tage.
 
-1. Adapter installieren und eine Instanz anlegen.
-2. **Zugangs-Token** aus Anycubic Slicer Next besorgen (siehe englische Anleitung) und im Feld
-   **„Slicer-Token"** eintragen.
-3. Speichern. Der Adapter meldet sich an, findet den Drucker und füllt den Objektbaum.
+Unter Windows erledigt das Skript [`tools/get-token.ps1`](https://github.com/hwiedermann/ioBroker.anycubic-cloud/blob/main/tools/get-token.ps1)
+die Arbeit. Es ist nicht Teil des npm-Pakets, also von GitHub herunterladen.
 
-Die ausführliche Token-Anleitung (Hilfsskript [`tools/token-holen.ps1`](https://github.com/hwiedermann/ioBroker.anycubic-cloud/blob/main/tools/token-holen.ps1) — liegt nur im GitHub-Repo, nicht im installierten Adapter; nur Windows x64 getestet, sowie
-der manuelle Weg) steht in der englischen [README.md](../../README.md).
+1. Anycubic Slicer Next starten und anmelden.
+2. `powershell -ExecutionPolicy Bypass -File .\get-token.ps1` ausführen.
+3. Das Skript liest die Slicer-Konfiguration. Neuere Slicer-Versionen verschlüsseln sie; dann fragt das
+   Skript nach einer Abbilddatei: Task-Manager, Reiter „Details“, Rechtsklick auf `AnycubicSlicerNext.exe`,
+   „Abbilddatei erstellen“. Danach das Skript erneut starten, es findet die Datei in `%TEMP%`.
+4. Der Token liegt in der Zwischenablage. In die Instanz-Einstellungen einfügen.
 
-## Lizenz
+Das Skript liest nur Dateien und schickt nichts ins Netz. Es ist nicht signiert, Windows fragt deshalb
+eventuell nach (`Unblock-File .\get-token.ps1` oder „Weitere Informationen, Trotzdem ausführen“).
 
-Copyright (c) 2026 Hendrik <iobroker@hwiedermann.de>
+Ohne Skript: Ältere Slicer-Versionen speichern den Token im Klartext in
+`%APPDATA%\AnycubicSlicerNext\AnycubicSlicerNext.conf` (`anycubic_cloud.access_token`). In einer
+Abbilddatei ist der Token eine lange Zeichenkette, die mit `eyJ` beginnt und zwei Punkte enthält.
 
-Lizenziert unter **GPL-3.0-or-later**; der Lizenzhinweis steht in
-[LICENSE](../../LICENSE), der vollständige Lizenztext in [COPYING](../../COPYING). Baut auf Erkenntnissen aus dem Projekt
-[`anycubic-cloud-api`](https://pypi.org/project/anycubic-cloud-api/) (GPL-3.0) auf.
+## Datenpunkte
+
+Ein Gerät je Drucker, benannt nach seiner Cloud-ID.
+
+| Datenpunkt | Bedeutung |
+| --- | --- |
+| `status` | idle, downloading, checking, leveling, heating, printing, paused, resuming, finished, stopping, stopped, error |
+| `online`, `busy`, `model`, `firmware`, `firmwareUpdate` | Druckerdaten |
+| `light`, `lightBrightness` | Innenbeleuchtung |
+| `job.*` | Datei, Fortschritt, Rest- und Laufzeit, Schichten, Filament (mm, g, geplant), Start, Ende, Pause-Grund |
+| `temperature.*` | Düse und Bett, Ist und Soll |
+| `fan.*` | Bauteil-, Hilfs- und ACE-Lüfter |
+| `ace.*` | Temperatur, Feuchte, aktiver Slot, Trocknen |
+| `ace.slotN.*` | Farbe, Material, SKU, Restmenge in %. `manual` ist true bei Rollen, die am Drucker von Hand eingetragen wurden (ohne RFID); sie haben keinen Restwert. |
+| `usage.last`, `usage.history` | Filamentverbrauch je Slot für den letzten Druck und die letzten 30 Drucke (JSON) |
+| `event.finished` | true, wenn ein Druck fertig ist, false beim nächsten Start |
+| `message.*` | Letzte Fehler- oder Hinweismeldung des Druckers |
+| `info.tokenExpiry`, `info.tokenDaysLeft`, `info.tokenExpiring` | Ablauf des Tokens |
+
+Temperaturen schickt der Drucker oft nur, solange App oder Slicer geöffnet sind; sonst aktualisiert sie der
+REST-Abgleich.
+
+### Nicht unterstützt
+
+- Steuern des Druckers (Pause, Abbruch, Licht, Trocknen). Über die Cloud möglich, aber noch nicht umgesetzt.
+- Kamerabilder. Die Cloud liefert nur einen Livestream, keine Standbilder.
+
+### Umstieg von 0.2.x
+
+Ab 0.3.0 sind alle Datenpunkte und Werte englisch, zum Beispiel `zustand` → `status`, `druckt` → `printing`,
+`temp.duese` → `temperature.nozzle`. Beim ersten Start löscht der Adapter die alten Objekte und übernimmt den
+Filamentverbrauch. Aufzeichnungen von History, SQL oder InfluxDB bleiben an den alten Datenpunkten. Skripte
+und Visualisierungen müssen angepasst werden.
