@@ -22,6 +22,34 @@ async function state(harness, id, type, val) {
 
 tests.integration(path.join(__dirname, ".."), {
     defineAdditionalTests({ suite }) {
+        suite("object definitions of 0.3.1", getHarness => {
+            it("brings name and role of existing objects up to date without new values", async function () {
+                this.timeout(60_000);
+                const harness = getHarness();
+                const old = (id, type, common) => harness.objects.setObjectAsync(id, { type, common, native: {} });
+                await old(DEV, "device", { name: "printer" });
+                await old(`${DEV}.job`, "channel", { name: { en: "Current print", de: "Aktueller Druck" } });
+                await old(`${DEV}.job.start`, "state", { name: { en: "Start", de: "Start" }, type: "string", role: "date", read: true, write: false });
+                await old(`${DEV}.ace.slot1.color`, "state", { name: { en: "Slot 1 color", de: "Slot 1 Farbe" }, type: "string", role: "level.color.rgb", read: true, write: false });
+                await old(`${DEV}.custom.thing`, "state", { name: "kept", type: "number", role: "value", read: true, write: false });
+
+                await harness.startAdapterAndWait();
+                await new Promise(r => setTimeout(r, 3000));
+
+                const job = await harness.objects.getObjectAsync(`${DEV}.job`);
+                assert.strictEqual(job.common.name.ru, "Текущая печать");
+                const start = await harness.objects.getObjectAsync(`${DEV}.job.start`);
+                assert.strictEqual(start.common.name["zh-cn"], "开始");
+                assert.strictEqual(start.common.role, "date");
+                const color = await harness.objects.getObjectAsync(`${DEV}.ace.slot1.color`);
+                assert.strictEqual(color.common.role, "text");
+                assert.strictEqual(color.common.name.fr, "Emplacement 1 couleur");
+                assert.strictEqual(Object.keys(color.common.name).length, 11);
+                const custom = await harness.objects.getObjectAsync(`${DEV}.custom.thing`);
+                assert.strictEqual(custom.common.name, "kept", "unknown objects stay untouched");
+            });
+        });
+
         suite("migration from 0.2.x", getHarness => {
             it("keeps the usage history and removes the German objects", async function () {
                 this.timeout(60_000);
