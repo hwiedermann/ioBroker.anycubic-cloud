@@ -225,6 +225,12 @@ const SLOT: Record<string, Def> = {
     },
 };
 
+/** true if the ID relative to the printer has its own definition (not the neutral fallback) */
+export function isKnown(id: string): boolean {
+    const s = id.match(/^ace\.slot(\d+)\.(\w+)$/);
+    return s ? !!SLOT[s[2]] : !!D[id];
+}
+
 export function definition(id: string): Def {
     const s = id.match(/^ace\.slot(\d+)\.(\w+)$/);
     if (s && SLOT[s[2]]) {

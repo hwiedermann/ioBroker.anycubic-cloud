@@ -96,6 +96,10 @@ updated by the REST resync.
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### **WORK IN PROGRESS**
+
+- (hwiedermann) Name and role of existing objects are updated on start, not only when a new value arrives
+
 ### 0.3.2 (2026-10-05)
 
 - (hwiedermann) Filament slot colours use role `text` instead of `level.color.rgb` (read-only state, `level.*` requires write access)

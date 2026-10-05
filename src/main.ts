@@ -13,7 +13,7 @@ import { PrinterModel, type Write } from './lib/printer-model.ts';
 import { slotChannel, tr } from './lib/i18n.ts';
 import { AnycubicRest } from './lib/rest.ts';
 import { jwtPayload } from './lib/signature.ts';
-import { CHANNELS, definition } from './lib/states.ts';
+import { CHANNELS, definition, isKnown } from './lib/states.ts';
 
 declare global {
     namespace ioBroker {
@@ -71,6 +71,7 @@ class AnycubicCloud extends utils.Adapter {
 
     private async onReady() {
         await migrate(this, (device, m) => this.saveMigrated(device, m));
+        await this.syncDefinitions();
         await this.stateWithValue('info.status', 'starting', {
             name: tr('Status', 'Status'),
             type: 'string',
@@ -298,6 +299,45 @@ class AnycubicCloud extends utils.Adapter {
         };
         this.printers.set(d.key, p);
         return p;
+    }
+
+    /* Objects are otherwise only updated when their value changes. After an update, bring the name and role of all
+       existing printer objects up to date right away, so a state without new values does not keep an old definition. */
+    private async syncDefinitions() {
+        const objects = await this.getAdapterObjectsAsync();
+        let changed = 0;
+        for (const [id, obj] of Object.entries(objects)) {
+            const m = id.slice(this.namespace.length + 1).match(/^(\d+)\.(.+)$/);
+            if (!m) {
+                continue;
+            }
+            const rel = m[2];
+            let target: Record<string, unknown> | undefined;
+            if (obj.type === 'state' && isKnown(rel)) {
+                const { name, role, type, unit, states } = definition(rel);
+                target = { name, role, type, unit, states };
+            } else if (obj.type === 'channel') {
+                const slot = rel.match(/^ace\.slot(\d+)$/);
+                const name = CHANNELS[rel] ?? (slot ? slotChannel(slot[1]) : undefined);
+                target = name && { name };
+            }
+            if (!target) {
+                continue;
+            }
+            const common = obj.common as unknown as Record<string, unknown>;
+            const diff = Object.fromEntries(
+                Object.entries(target).filter(
+                    ([k, v]) => v !== undefined && JSON.stringify(common[k]) !== JSON.stringify(v),
+                ),
+            );
+            if (Object.keys(diff).length) {
+                await this.extendForeignObjectAsync(id, { common: diff });
+                changed++;
+            }
+        }
+        if (changed) {
+            this.log.info(`Updated name/role of ${changed} existing objects`);
+        }
     }
 
     private async saveMigrated(device: string, m: Migrated) {
