@@ -1,7 +1,8 @@
 /* Object definitions per state, relative to the printer device. Everything is read-only.
    Unknown IDs get a neutral definition, see definition(). */
 
-type Name = { en: string; de: string };
+import { slotName, tr, type Name } from './i18n.ts';
+
 type Def = {
     name: Name;
     type: 'number' | 'string' | 'boolean';
@@ -10,7 +11,7 @@ type Def = {
     states?: Record<string, string>;
 };
 
-const n = (en: string, de: string): Name => ({ en, de });
+const n = tr;
 
 export const STATUS_VALUES = [
     'idle',
@@ -211,7 +212,8 @@ const D: Record<string, Def> = {
 };
 
 const SLOT: Record<string, Def> = {
-    color: { name: n('color', 'Farbe'), type: 'string', role: 'level.color.rgb' },
+    /* read-only: level.* roles require write = true, there is no read-only colour role */
+    color: { name: n('color', 'Farbe'), type: 'string', role: 'text' },
     material: { name: n('material', 'Material'), type: 'string', role: 'text' },
     sku: { name: n('SKU (RFID)', 'SKU (RFID)'), type: 'string', role: 'text' },
     remaining: { name: n('remaining', 'Restmenge'), type: 'number', role: 'value.fill', unit: '%' },
@@ -227,7 +229,7 @@ export function definition(id: string): Def {
     const s = id.match(/^ace\.slot(\d+)\.(\w+)$/);
     if (s && SLOT[s[2]]) {
         const d = SLOT[s[2]];
-        return { ...d, name: n(`Slot ${s[1]} ${d.name.en}`, `Slot ${s[1]} ${d.name.de}`) };
+        return { ...d, name: slotName(s[1], d.name) };
     }
     return D[id] ?? { name: n(id, id), type: 'string', role: 'state' };
 }

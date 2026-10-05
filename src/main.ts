@@ -10,6 +10,7 @@ import { credentialsFrom, loadPackage } from './lib/credentials.ts';
 import { migrate, type Migrated } from './lib/migration.ts';
 import { certificatesFrom, mqttLogin, subscriptions } from './lib/mqtt-login.ts';
 import { PrinterModel, type Write } from './lib/printer-model.ts';
+import { slotChannel, tr } from './lib/i18n.ts';
 import { AnycubicRest } from './lib/rest.ts';
 import { jwtPayload } from './lib/signature.ts';
 import { CHANNELS, definition } from './lib/states.ts';
@@ -71,17 +72,17 @@ class AnycubicCloud extends utils.Adapter {
     private async onReady() {
         await migrate(this, (device, m) => this.saveMigrated(device, m));
         await this.stateWithValue('info.status', 'starting', {
-            name: { en: 'Status', de: 'Status' },
+            name: tr('Status', 'Status'),
             type: 'string',
             role: 'text',
         });
         await this.stateWithValue('info.lastMessage', '', {
-            name: { en: 'Time of the last MQTT message', de: 'Zeitpunkt der letzten MQTT-Meldung' },
+            name: tr('Time of the last MQTT message', 'Zeitpunkt der letzten MQTT-Meldung'),
             type: 'string',
             role: 'date',
         });
         await this.stateWithValue('info.tokenExpiring', false, {
-            name: { en: 'Token expires soon', de: 'Token läuft bald ab' },
+            name: tr('Token expires soon', 'Token läuft bald ab'),
             type: 'boolean',
             role: 'indicator',
         });
@@ -108,12 +109,12 @@ class AnycubicCloud extends utils.Adapter {
         const warnDays = Math.max(1, Number(this.config.tokenWarnDays ?? old.tokenWarnTage) || 14);
         const days = Math.floor((exp - Date.now()) / 864e5);
         await this.stateWithValue('info.tokenExpiry', new Date(exp).toISOString(), {
-            name: { en: 'Token expiry', de: 'Token läuft ab' },
+            name: tr('Token expiry', 'Token läuft ab'),
             type: 'string',
             role: 'date',
         });
         await this.stateWithValue('info.tokenDaysLeft', days, {
-            name: { en: 'Token days left', de: 'Token-Resttage' },
+            name: tr('Token days left', 'Token-Resttage'),
             type: 'number',
             role: 'value',
             unit: 'd',
@@ -207,10 +208,10 @@ class AnycubicCloud extends utils.Adapter {
         );
 
         await this.stateWithValue('info.messageCounts', '{}', {
-            name: {
-                en: 'Received messages since start per type/action (JSON)',
-                de: 'Empfangene Meldungen seit Start je type/action (JSON)',
-            },
+            name: tr(
+                'Received messages since start per type/action (JSON)',
+                'Empfangene Meldungen seit Start je type/action (JSON)',
+            ),
             type: 'string',
             role: 'json',
         });
@@ -367,7 +368,7 @@ class AnycubicCloud extends utils.Adapter {
             const slot = k.match(/^ace\.slot(\d+)$/);
             await this.extendObjectAsync(`${device}.${k}`, {
                 type: 'channel',
-                common: { name: CHANNELS[k] ?? (slot ? `Slot ${slot[1]}` : k) },
+                common: { name: CHANNELS[k] ?? (slot ? slotChannel(slot[1]) : k) },
                 native: {},
             });
             this.created.add(`${device}.${k}`);
