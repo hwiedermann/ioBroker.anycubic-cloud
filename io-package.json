@@ -1,20 +1,33 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "news": {
+      "0.3.3": {
+        "en": "Name and role of existing objects are updated on start, not only when a new value arrives",
+        "de": "Name und Rolle vorhandener Objekte werden beim Start aktualisiert, nicht erst beim nächsten neuen Wert",
+        "ru": "Имя и роль существующих объектов обновляются при запуске, а не только при поступлении нового значения",
+        "pt": "O nome e a função dos objetos existentes são atualizados na inicialização, não apenas quando chega um novo valor",
+        "nl": "Naam en rol van bestaande objecten worden bij het starten bijgewerkt, niet pas wanneer er een nieuwe waarde binnenkomt",
+        "fr": "Le nom et le rôle des objets existants sont mis à jour au démarrage, et pas seulement à l'arrivée d'une nouvelle valeur",
+        "it": "Nome e ruolo degli oggetti esistenti vengono aggiornati all'avvio, non solo all'arrivo di un nuovo valore",
+        "es": "El nombre y el rol de los objetos existentes se actualizan al iniciar, no solo cuando llega un valor nuevo",
+        "pl": "Nazwa i rola istniejących obiektów są aktualizowane przy starcie, a nie dopiero po nadejściu nowej wartości",
+        "uk": "Назва та роль наявних об'єктів оновлюються під час запуску, а не лише коли надходить нове значення",
+        "zh-cn": "现有对象的名称和角色在启动时更新，而不仅是在收到新值时更新"
+      },
       "0.3.2": {
         "en": "Filament slot colours use role `text` instead of `level.color.rgb` (read-only state, `level.*` requires write access)\nObject names are translated into all ioBroker languages",
         "de": "Filament-Slot-Farben verwenden Rolle `text` statt `level.color.rgb` (schreibgeschützt, `level.*` erfordert Schreibzugriff)\nObjektnamen sind in alle ioBroker-Sprachen übersetzt",
-        "ru": "В цветах слотов нитей используется роль `text` вместо `level.color.rgb` (состояние «только для чтения», «level.*`» требует доступа для записи)\nИмена объектов переведены на все языки IOBroker",
-        "pt": "As cores do slot de filamento usam a função `text` em vez de `level.color.rgb` (`level.*` requer acesso de gravação)\nNomes de objetos são traduzidos em todos os idiomas",
-        "nl": "De kleuren van de gloeidraadsleuven gebruiken de rol `text` in plaats van `level.color.rgb` (alleen-lezen staat, `level.*` vereist schrijftoegang)\nObjectnamen worden vertaald in alle talen van IOBroker",
-        "fr": "Les couleurs des slots de filament utilisent le rôle « text » au lieu de « level.color.rgb » (en lecture seule, « level.* » nécessite un accès en écriture)\nLes noms des objets sont traduits dans toutes les langues IObroker",
-        "it": "I colori degli slot per i filamenti usano il ruolo «text» anziché «level.color.rgb» (solo lettura, `level.*` richiede l'accesso in scrittura)\nI nomi degli oggetti sono tradotti in IOBroker",
-        "es": "Los colores de las ranuras de filamento usan el rol `text` en lugar de `level.color.rgb` (estado de solo lectura, `nivel.*` requiere acceso de escritura)\nLos nombres de objetos se traducen a todos los idiomas de IOBroker",
-        "pl": "Kolory szczelin włókien używają roli `text` zamiast `level.color.rgb` (stan tylko do odczytu, `level.*` wymaga dostępu do zapisu)\nNazwy obiektów są tłumaczone na wszystkie języki ioBroker",
-        "uk": "Кольори слотів ниток використовують роль `text` замість `level.color.rgb` (стан лише для читання, `level.*` вимагає доступу до запису)\nНазви об'єктів перекладені на всі мови IObroker",
-        "zh-cn": "灯丝槽颜色使用角色 “文本” 而不是 “level.color.rgb”（只读状态，`level.*` 需要写入权限）\n对象名称被翻译成所有 IOBroker 语言"
+        "ru": "Цвета слотов филамента используют роль `text` вместо `level.color.rgb` (состояние только для чтения, `level.*` требует права записи)\nИмена объектов переведены на все языки ioBroker",
+        "pt": "As cores dos slots de filamento usam a função `text` em vez de `level.color.rgb` (estado somente leitura, `level.*` requer acesso de escrita)\nOs nomes dos objetos estão traduzidos em todos os idiomas do ioBroker",
+        "nl": "Filamentslotkleuren gebruiken de rol `text` in plaats van `level.color.rgb` (alleen-lezen status, `level.*` vereist schrijftoegang)\nObjectnamen zijn vertaald in alle ioBroker-talen",
+        "fr": "Les couleurs des emplacements de filament utilisent le rôle `text` au lieu de `level.color.rgb` (état en lecture seule, `level.*` nécessite un accès en écriture)\nLes noms des objets sont traduits dans toutes les langues d'ioBroker",
+        "it": "I colori degli slot del filamento usano il ruolo `text` invece di `level.color.rgb` (stato di sola lettura, `level.*` richiede l'accesso in scrittura)\nI nomi degli oggetti sono tradotti in tutte le lingue di ioBroker",
+        "es": "Los colores de las ranuras de filamento usan el rol `text` en lugar de `level.color.rgb` (estado de solo lectura, `level.*` requiere acceso de escritura)\nLos nombres de los objetos están traducidos a todos los idiomas de ioBroker",
+        "pl": "Kolory slotów filamentu używają roli `text` zamiast `level.color.rgb` (stan tylko do odczytu, `level.*` wymaga dostępu do zapisu)\nNazwy obiektów są przetłumaczone na wszystkie języki ioBroker",
+        "uk": "Кольори слотів філаменту використовують роль `text` замість `level.color.rgb` (стан лише для читання, `level.*` потребує доступу на запис)\nНазви об'єктів перекладено всіма мовами ioBroker",
+        "zh-cn": "耗材槽位颜色使用角色 `text` 而不是 `level.color.rgb`（只读状态，`level.*` 需要写入权限）\n对象名称已翻译为所有 ioBroker 语言"
       },
       "0.3.1": {
         "en": "Durations use the unit m of role value.interval (values still in minutes); responsive admin layout; documentation linked",
