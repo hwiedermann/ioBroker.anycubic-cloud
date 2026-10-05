@@ -96,7 +96,7 @@ updated by the REST resync.
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.3.3 (2026-10-05)
 
 - (hwiedermann) Name and role of existing objects are updated on start, not only when a new value arrives
 
@@ -123,11 +123,6 @@ updated by the REST resync.
 
 - (hwiedermann) Token helper script moved to `tools/` and no longer part of the npm package
 - (hwiedermann) CI: integration tests on Node 22/24/26 on Linux, Windows and macOS, releases with trusted publishing
-
-### 0.2.1 (2026-10-03)
-
-- (hwiedermann) Repository checker findings fixed: metadata, translations, CI workflow, English README
-- (hwiedermann) Releases are published with npm provenance
 
 [Older changes](CHANGELOG_OLD.md)
 
