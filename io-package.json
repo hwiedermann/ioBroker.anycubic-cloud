@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "news": {
+      "0.3.2": {
+        "en": "Filament slot colours use role `text` instead of `level.color.rgb` (read-only state, `level.*` requires write access)\nObject names are translated into all ioBroker languages",
+        "de": "Filament-Slot-Farben verwenden Rolle `text` statt `level.color.rgb` (schreibgeschützt, `level.*` erfordert Schreibzugriff)\nObjektnamen sind in alle ioBroker-Sprachen übersetzt",
+        "ru": "В цветах слотов нитей используется роль `text` вместо `level.color.rgb` (состояние «только для чтения», «level.*`» требует доступа для записи)\nИмена объектов переведены на все языки IOBroker",
+        "pt": "As cores do slot de filamento usam a função `text` em vez de `level.color.rgb` (`level.*` requer acesso de gravação)\nNomes de objetos são traduzidos em todos os idiomas",
+        "nl": "De kleuren van de gloeidraadsleuven gebruiken de rol `text` in plaats van `level.color.rgb` (alleen-lezen staat, `level.*` vereist schrijftoegang)\nObjectnamen worden vertaald in alle talen van IOBroker",
+        "fr": "Les couleurs des slots de filament utilisent le rôle « text » au lieu de « level.color.rgb » (en lecture seule, « level.* » nécessite un accès en écriture)\nLes noms des objets sont traduits dans toutes les langues IObroker",
+        "it": "I colori degli slot per i filamenti usano il ruolo «text» anziché «level.color.rgb» (solo lettura, `level.*` richiede l'accesso in scrittura)\nI nomi degli oggetti sono tradotti in IOBroker",
+        "es": "Los colores de las ranuras de filamento usan el rol `text` en lugar de `level.color.rgb` (estado de solo lectura, `nivel.*` requiere acceso de escritura)\nLos nombres de objetos se traducen a todos los idiomas de IOBroker",
+        "pl": "Kolory szczelin włókien używają roli `text` zamiast `level.color.rgb` (stan tylko do odczytu, `level.*` wymaga dostępu do zapisu)\nNazwy obiektów są tłumaczone na wszystkie języki ioBroker",
+        "uk": "Кольори слотів ниток використовують роль `text` замість `level.color.rgb` (стан лише для читання, `level.*` вимагає доступу до запису)\nНазви об'єктів перекладені на всі мови IObroker",
+        "zh-cn": "灯丝槽颜色使用角色 “文本” 而不是 “level.color.rgb”（只读状态，`level.*` 需要写入权限）\n对象名称被翻译成所有 IOBroker 语言"
+      },
       "0.3.1": {
         "en": "Durations use the unit m of role value.interval (values still in minutes); responsive admin layout; documentation linked",
         "de": "Zeitdauern nutzen die Einheit m der Rolle value.interval (Werte weiterhin in Minuten); responsives Admin-Layout; Dokumentation verlinkt",

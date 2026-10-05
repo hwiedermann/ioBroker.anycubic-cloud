@@ -96,7 +96,7 @@ updated by the REST resync.
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
-### **WORK IN PROGRESS**
+### 0.3.2 (2026-10-05)
 
 - (hwiedermann) Filament slot colours use role `text` instead of `level.color.rgb` (read-only state, `level.*` requires write access)
 - (hwiedermann) Object names are translated into all ioBroker languages
@@ -124,14 +124,6 @@ updated by the REST resync.
 
 - (hwiedermann) Repository checker findings fixed: metadata, translations, CI workflow, English README
 - (hwiedermann) Releases are published with npm provenance
-
-### 0.2.0 (2026-10-03)
-
-- (hwiedermann) First public beta: reconnect with backoff, plain text status, watchdog, token expiry warning
-
-### 0.1.0
-
-- (hwiedermann) Initial release
 
 [Older changes](CHANGELOG_OLD.md)
 
