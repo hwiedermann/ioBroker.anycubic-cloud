@@ -157,7 +157,16 @@
       "common": {
         "name": {
           "en": "Information",
-          "de": "Information"
+          "de": "Information",
+          "ru": "Информация",
+          "pt": "Informação",
+          "nl": "Informatie",
+          "fr": "Informations",
+          "it": "Informazioni",
+          "es": "Información",
+          "pl": "Informacje",
+          "uk": "Інформація",
+          "zh-cn": "信息"
         }
       },
       "native": {}
@@ -169,7 +178,16 @@
         "role": "indicator.connected",
         "name": {
           "en": "MQTT connected",
-          "de": "MQTT verbunden"
+          "de": "MQTT verbunden",
+          "ru": "MQTT подключён",
+          "pt": "MQTT conectado",
+          "nl": "MQTT verbonden",
+          "fr": "MQTT connecté",
+          "it": "MQTT connesso",
+          "es": "MQTT conectado",
+          "pl": "MQTT połączony",
+          "uk": "MQTT підключено",
+          "zh-cn": "MQTT 已连接"
         },
         "type": "boolean",
         "read": true,
