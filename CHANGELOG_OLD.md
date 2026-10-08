@@ -1,4 +1,12 @@
 # Older changes
+## 0.3.0 (2026-10-04)
+
+- (hwiedermann) BREAKING: State IDs and values are now English, e.g. `zustand` is now `status` and `temp.duese` is now `temperature.nozzle`. Old objects are deleted on the first start, the filament usage history is carried over. History, SQL or InfluxDB data stays with the old IDs. Adapt scripts and visualizations.
+- (hwiedermann) Compact mode supported
+- (hwiedermann) Token field in the admin is a text area, so browsers no longer offer to generate a password
+- (hwiedermann) Token script renamed to `tools/get-token.ps1` and translated to English
+- (hwiedermann) License text moved to COPYING, LICENSE holds the copyright notice
+
 ## 0.2.2 (2026-10-03)
 
 - (hwiedermann) Token helper script moved to `tools/` and no longer part of the npm package
