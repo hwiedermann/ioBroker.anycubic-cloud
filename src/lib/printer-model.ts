@@ -489,14 +489,15 @@ export class PrinterModel {
         this.set(a, 'temperature.bedTarget', num(d.target_hotbed_temp));
     }
 
-    /* fromRest: /v2/printer/info reports multi_color_box.temp as a fixed value (seen: 30 °C while the ACE dried at
-       65 °C, unchanged while the printer cooled down) — only MQTT reports the real temperature. Take the REST value
-       only as long as there is no value at all yet. */
+    /* fromRest: /v2/printer/info reports multi_color_box.temp and .humidity as fixed values (seen: 30–34 °C and 22 %
+       while the ACE dried at 65 °C with 15–17 %, unchanged while the printer cooled down) — only MQTT reports the real
+       values. Take the REST values only as long as there is no value at all yet. */
     private ace(a: Write[], b: any, fromRest = false) {
-        if ('temp' in b && (!fromRest || !this.values.has('ace.temperature'))) {
+        const restOnlyIfEmpty = (id: string) => !fromRest || !this.values.has(id);
+        if ('temp' in b && restOnlyIfEmpty('ace.temperature')) {
             this.set(a, 'ace.temperature', num(b.temp));
         }
-        if ('humidity' in b) {
+        if ('humidity' in b && restOnlyIfEmpty('ace.humidity')) {
             this.set(a, 'ace.humidity', num(b.humidity));
         }
         if ('loaded_slot' in b) {
@@ -511,7 +512,7 @@ export class PrinterModel {
             this.set(a, 'ace.drying.targetTemperature', num(t.target_temp));
             this.set(a, 'ace.drying.duration', num(t.duration));
             this.set(a, 'ace.drying.remainingTime', num(t.remain_time));
-            if (t.humidity != null) {
+            if (t.humidity != null && restOnlyIfEmpty('ace.humidity')) {
                 this.set(a, 'ace.humidity', num(t.humidity));
             }
         }
