@@ -84,6 +84,7 @@ One device per printer, named by its cloud ID.
 
 The printer sends temperatures often only while the app or slicer is open; otherwise the values are
 updated by the REST resync.
+The ACE temperature is taken from MQTT only: the REST response reports a fixed value for it.
 
 ### Not supported
 
@@ -96,6 +97,11 @@ updated by the REST resync.
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.3.4 (2026-10-08)
+
+- (hwiedermann) ACE temperature no longer drops to a fixed cloud value (e.g. 30 °C) with every REST resync, only MQTT reports the real value
+- (hwiedermann) Printer is shown online again right after waking up from sleep (`lastWill/onlineReport` with state `online`)
+
 ### 0.3.3 (2026-10-05)
 
 - (hwiedermann) Name and role of existing objects are updated on start, not only when a new value arrives
@@ -118,11 +124,6 @@ updated by the REST resync.
 - (hwiedermann) Token field in the admin is a text area, so browsers no longer offer to generate a password
 - (hwiedermann) Token script renamed to `tools/get-token.ps1` and translated to English
 - (hwiedermann) License text moved to COPYING, LICENSE holds the copyright notice
-
-### 0.2.2 (2026-10-03)
-
-- (hwiedermann) Token helper script moved to `tools/` and no longer part of the npm package
-- (hwiedermann) CI: integration tests on Node 22/24/26 on Linux, Windows and macOS, releases with trusted publishing
 
 [Older changes](CHANGELOG_OLD.md)
 

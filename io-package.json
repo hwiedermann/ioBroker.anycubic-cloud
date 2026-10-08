@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "news": {
+      "0.3.4": {
+        "en": "ACE temperature no longer drops to a fixed cloud value (e.g. 30 °C) every 10 minutes\nPrinter is shown online again right after waking up from sleep",
+        "de": "Die ACE-Temperatur fällt nicht mehr alle 10 Minuten auf einen festen Cloud-Wert (z. B. 30 °C)\nDer Drucker wird nach dem Aufwachen aus dem Ruhemodus sofort wieder als online angezeigt",
+        "ru": "Температура ACE больше не падает каждые 10 минут до фиксированного значения из облака (например, 30 °C)\nПринтер снова отображается в сети сразу после выхода из спящего режима",
+        "pt": "A temperatura do ACE já não cai a cada 10 minutos para um valor fixo da nuvem (p. ex. 30 °C)\nA impressora volta a aparecer online logo após sair do modo de suspensão",
+        "nl": "De ACE-temperatuur valt niet meer elke 10 minuten terug naar een vaste cloudwaarde (bijv. 30 °C)\nDe printer wordt na het ontwaken uit de slaapstand direct weer als online getoond",
+        "fr": "La température de l'ACE ne retombe plus toutes les 10 minutes à une valeur fixe du cloud (p. ex. 30 °C)\nL'imprimante est de nouveau affichée en ligne dès sa sortie de veille",
+        "it": "La temperatura dell'ACE non scende più ogni 10 minuti a un valore fisso del cloud (ad es. 30 °C)\nLa stampante risulta di nuovo online subito dopo il risveglio dalla modalità di sospensione",
+        "es": "La temperatura del ACE ya no cae cada 10 minutos a un valor fijo de la nube (p. ej., 30 °C)\nLa impresora vuelve a mostrarse en línea justo después de salir del modo de suspensión",
+        "pl": "Temperatura ACE nie spada już co 10 minut do stałej wartości z chmury (np. 30 °C)\nDrukarka jest ponownie widoczna jako online zaraz po wybudzeniu z uśpienia",
+        "uk": "Температура ACE більше не падає кожні 10 хвилин до фіксованого значення з хмари (наприклад, 30 °C)\nПринтер знову відображається в мережі одразу після виходу зі сплячого режиму",
+        "zh-cn": "ACE 温度不再每 10 分钟跌回云端的固定值（例如 30 °C）\n打印机从睡眠中唤醒后会立即重新显示为在线"
+      },
       "0.3.3": {
         "en": "Name and role of existing objects are updated on start, not only when a new value arrives",
         "de": "Name und Rolle vorhandener Objekte werden beim Start aktualisiert, nicht erst beim nächsten neuen Wert",
@@ -80,19 +93,6 @@
         "pl": "Zgodność repozytorium: metadane, i18n dla wszystkich wymaganych języków, oficjalny przepływ pracy CI, dokumenty tylko w języku angielskim z niemieckim w sekcji docs/de, konfiguracja eslint",
         "uk": "Відповідність репозиторію: метадані, i18n для всіх необхідних мов, офіційний робочий процес CI, документи лише англійською мовою з німецькою в docs/de, конфігурація eslint",
         "zh-cn": "存储库合规性：元数据、所有必需语言的 i18n、官方 CI 工作流程、docs/de 下的纯英语文档和德语、eslint 配置"
-      },
-      "0.2.0": {
-        "en": "First public beta: robust reconnect with backoff, plain-text status, dead-man watchdog, token-expiry warning",
-        "de": "Erste öffentliche Beta: robuster Reconnect mit Backoff, Klartext-Status, Totmann-Wächter, Token-Ablauf-Warnung",
-        "ru": "Первая публичная бета-версия: надежное повторное подключение с откатом, текстовый статус, сторожевой таймер, предупреждение об истечении срока действия токена.",
-        "pt": "Primeiro beta público: reconexão robusta com espera, status de texto simples, cão de guarda de homem morto, aviso de expiração de token",
-        "nl": "Eerste openbare bèta: robuust opnieuw verbinden met uitstel, status in platte tekst, dodemanswaakhond, waarschuwing voor het verlopen van tokens",
-        "fr": "Première version bêta publique : reconnexion robuste avec backoff, statut en texte brut, chien de garde d'homme mort, avertissement d'expiration de jeton",
-        "it": "Prima beta pubblica: riconnessione robusta con backoff, stato in testo semplice, watchdog dead-man, avviso di scadenza del token",
-        "es": "Primera versión beta pública: reconexión robusta con retroceso, estado de texto sin formato, vigilancia de hombre muerto, advertencia de vencimiento del token",
-        "pl": "Pierwsza publiczna wersja beta: solidne ponowne połączenie z wycofywaniem, status w postaci zwykłego tekstu, watchdog typu dead-man, ostrzeżenie o wygaśnięciu tokenu",
-        "uk": "Перша загальнодоступна бета-версія: надійне повторне підключення з відстрочкою, статус простого тексту, сторожовий таймер мертвої людини, попередження про закінчення терміну дії маркера",
-        "zh-cn": "首次公开测试版：具有退避功能的稳健重新连接、纯文本状态、死人看门狗、令牌过期警告"
       }
     },
     "titleLang": {
