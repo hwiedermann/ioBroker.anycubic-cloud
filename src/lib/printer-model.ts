@@ -185,7 +185,7 @@ export class PrinterModel {
         }
         const box = Array.isArray(i.multi_color_box) ? i.multi_color_box[0] : i.multi_color_box;
         if (box) {
-            this.ace(a, box);
+            this.ace(a, box, true);
         }
         const p = i.project;
         if (p && p.print_status === 1) {
@@ -264,7 +264,8 @@ export class PrinterModel {
                 }
                 break;
             case 'lastWill':
-                this.set(a, 'online', false);
+                /* lastWill/onlineReport is sent with state "offline" AND "online" (e.g. printer wakes up from sleep) */
+                this.set(a, 'online', m.state === 'online');
                 break;
             case 'tempature':
                 this.temperatures(a, d);
@@ -488,8 +489,11 @@ export class PrinterModel {
         this.set(a, 'temperature.bedTarget', num(d.target_hotbed_temp));
     }
 
-    private ace(a: Write[], b: any) {
-        if ('temp' in b) {
+    /* fromRest: /v2/printer/info reports multi_color_box.temp as a fixed value (seen: 30 °C while the ACE dried at
+       65 °C, unchanged while the printer cooled down) — only MQTT reports the real temperature. Take the REST value
+       only as long as there is no value at all yet. */
+    private ace(a: Write[], b: any, fromRest = false) {
+        if ('temp' in b && (!fromRest || !this.values.has('ace.temperature'))) {
             this.set(a, 'ace.temperature', num(b.temp));
         }
         if ('humidity' in b) {
