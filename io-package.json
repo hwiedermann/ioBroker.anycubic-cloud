@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "news": {
+      "0.3.5": {
+        "en": "ACE humidity no longer jumps to a fixed cloud value (e.g. 22 %) every 10 minutes",
+        "de": "Die ACE-Feuchte springt nicht mehr alle 10 Minuten auf einen festen Cloud-Wert (z. B. 22 %)",
+        "ru": "Влажность ACE больше не скачет каждые 10 минут к фиксированному значению из облака (например, 22 %)",
+        "pt": "A humidade do ACE já não salta a cada 10 minutos para um valor fixo da nuvem (p. ex. 22 %)",
+        "nl": "De ACE-luchtvochtigheid springt niet meer elke 10 minuten naar een vaste cloudwaarde (bijv. 22 %)",
+        "fr": "L'humidité de l'ACE ne saute plus toutes les 10 minutes à une valeur fixe du cloud (p. ex. 22 %)",
+        "it": "L'umidità dell'ACE non salta più ogni 10 minuti a un valore fisso del cloud (ad es. 22 %)",
+        "es": "La humedad del ACE ya no salta cada 10 minutos a un valor fijo de la nube (p. ej., 22 %)",
+        "pl": "Wilgotność ACE nie skacze już co 10 minut do stałej wartości z chmury (np. 22 %)",
+        "uk": "Вологість ACE більше не стрибає кожні 10 хвилин до фіксованого значення з хмари (наприклад, 22 %)",
+        "zh-cn": "ACE 湿度不再每 10 分钟跳回云端的固定值（例如 22 %）"
+      },
       "0.3.4": {
         "en": "ACE temperature no longer drops to a fixed cloud value (e.g. 30 °C) every 10 minutes\nPrinter is shown online again right after waking up from sleep",
         "de": "Die ACE-Temperatur fällt nicht mehr alle 10 Minuten auf einen festen Cloud-Wert (z. B. 30 °C)\nDer Drucker wird nach dem Aufwachen aus dem Ruhemodus sofort wieder als online angezeigt",
@@ -80,19 +93,6 @@
         "pl": "Skrypt pomocniczy tokenu nie jest już częścią pakietu npm (do pobrania z GitHub, link w README i admin); testy integracyjne na Node 22/24/26 na systemach Linux, Windows i macOS; wydania poprzez standardową akcję wdrażania ioBroker",
         "uk": "Сценарій допоміжного маркера більше не є частиною пакета npm (завантажити з GitHub, посилання на README та admin); інтеграційні тести на Node 22/24/26 на Linux, Windows і macOS; випуски за допомогою стандартної дії ioBroker розгортання",
         "zh-cn": "令牌帮助程序脚本不再是 npm 包的一部分（从 GitHub 下载，在 README 和 admin 中链接）； Linux、Windows 和 macOS 上的 Node 22/24/26 集成测试；通过标准 ioBroker 部署操作发布"
-      },
-      "0.2.1": {
-        "en": "Repository compliance: metadata, i18n for all required languages, official CI workflow, English-only docs with German under docs/de, eslint config",
-        "de": "Repository-Konformität: Metadaten, i18n in allen Pflichtsprachen, offizieller CI-Workflow, englische Doku mit Deutsch unter docs/de, eslint-Config",
-        "ru": "Соответствие репозитория: метаданные, i18n для всех необходимых языков, официальный рабочий процесс CI, документация только на английском языке и немецком языке в docs/de, конфигурация eslint",
-        "pt": "Conformidade do repositório: metadados, i18n para todos os idiomas necessários, fluxo de trabalho de CI oficial, documentos somente em inglês com alemão em docs/de, configuração eslint",
-        "nl": "Naleving van de repository: metadata, i18n voor alle vereiste talen, officiële CI-workflow, alleen Engelstalige documenten met Duits onder docs/de, eslint-configuratie",
-        "fr": "Conformité du référentiel : métadonnées, i18n pour toutes les langues requises, flux de travail officiel CI, documents en anglais uniquement avec l'allemand sous docs/de, configuration eslint",
-        "it": "Conformità del repository: metadati, i18n per tutte le lingue richieste, flusso di lavoro CI ufficiale, documenti solo in inglese con tedesco in docs/de, configurazione eslint",
-        "es": "Cumplimiento del repositorio: metadatos, i18n para todos los idiomas requeridos, flujo de trabajo oficial de CI, documentos solo en inglés con alemán en docs/de, configuración de eslint",
-        "pl": "Zgodność repozytorium: metadane, i18n dla wszystkich wymaganych języków, oficjalny przepływ pracy CI, dokumenty tylko w języku angielskim z niemieckim w sekcji docs/de, konfiguracja eslint",
-        "uk": "Відповідність репозиторію: метадані, i18n для всіх необхідних мов, офіційний робочий процес CI, документи лише англійською мовою з німецькою в docs/de, конфігурація eslint",
-        "zh-cn": "存储库合规性：元数据、所有必需语言的 i18n、官方 CI 工作流程、docs/de 下的纯英语文档和德语、eslint 配置"
       }
     },
     "titleLang": {

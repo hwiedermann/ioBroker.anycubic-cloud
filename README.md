@@ -84,7 +84,7 @@ One device per printer, named by its cloud ID.
 
 The printer sends temperatures often only while the app or slicer is open; otherwise the values are
 updated by the REST resync.
-The ACE temperature is taken from MQTT only: the REST response reports a fixed value for it.
+The ACE temperature and humidity are taken from MQTT only: the REST response reports fixed values for them.
 
 ### Not supported
 
@@ -97,6 +97,10 @@ The ACE temperature is taken from MQTT only: the REST response reports a fixed v
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.3.5 (2026-10-08)
+
+- (hwiedermann) ACE humidity no longer jumps to a fixed cloud value (e.g. 22 %) with every REST resync, only MQTT reports the real value
+
 ### 0.3.4 (2026-10-08)
 
 - (hwiedermann) ACE temperature no longer drops to a fixed cloud value (e.g. 30 °C) with every REST resync, only MQTT reports the real value
@@ -116,14 +120,6 @@ The ACE temperature is taken from MQTT only: the REST response reports a fixed v
 - (hwiedermann) Durations (remaining and elapsed time, drying) use the unit `m` defined for role `value.interval`; values are still minutes
 - (hwiedermann) Admin: number fields follow the responsive layout recommendations
 - (hwiedermann) Documentation linked in io-package.json, README links the device and manufacturer page
-
-### 0.3.0 (2026-10-04)
-
-- (hwiedermann) BREAKING: State IDs and values are now English, e.g. `zustand` is now `status` and `temp.duese` is now `temperature.nozzle`. Old objects are deleted on the first start, the filament usage history is carried over. History, SQL or InfluxDB data stays with the old IDs. Adapt scripts and visualizations.
-- (hwiedermann) Compact mode supported
-- (hwiedermann) Token field in the admin is a text area, so browsers no longer offer to generate a password
-- (hwiedermann) Token script renamed to `tools/get-token.ps1` and translated to English
-- (hwiedermann) License text moved to COPYING, LICENSE holds the copyright notice
 
 [Older changes](CHANGELOG_OLD.md)
 
