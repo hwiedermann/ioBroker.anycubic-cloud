@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { inflateRawSync } from 'node:zlib';
+import { HTTP_TIMEOUT_MS } from './constants.ts';
 import type { Credentials } from './signature.ts';
 
 export const PACKAGE = { name: 'anycubic-cloud-api', version: '0.4.33' };
@@ -40,7 +41,11 @@ export function readZip(zip: Buffer): Map<string, Buffer> {
 
 export async function loadPackage(dir: string): Promise<Map<string, Buffer>> {
     const file = join(dir, `${PACKAGE.name}-${PACKAGE.version}.whl`);
-    const meta = (await (await fetch(`https://pypi.org/pypi/${PACKAGE.name}/${PACKAGE.version}/json`)).json()) as any;
+    const meta = (await (
+        await fetch(`https://pypi.org/pypi/${PACKAGE.name}/${PACKAGE.version}/json`, {
+            signal: AbortSignal.timeout(HTTP_TIMEOUT_MS),
+        })
+    ).json()) as any;
     const wheel = (meta.urls as any[]).find(u => u.packagetype === 'bdist_wheel');
     if (!wheel) {
         throw new Error('no wheel on PyPI');
@@ -49,7 +54,9 @@ export async function loadPackage(dir: string): Promise<Map<string, Buffer>> {
     try {
         zip = await readFile(file);
     } catch {
-        zip = Buffer.from(await (await fetch(wheel.url)).arrayBuffer());
+        zip = Buffer.from(
+            await (await fetch(wheel.url, { signal: AbortSignal.timeout(HTTP_TIMEOUT_MS) })).arrayBuffer(),
+        );
     }
     const sha = createHash('sha256').update(zip).digest('hex');
     if (sha !== wheel.digests.sha256) {

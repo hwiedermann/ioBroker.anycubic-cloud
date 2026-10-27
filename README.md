@@ -97,6 +97,11 @@ The ACE temperature and humidity are taken from MQTT only: the REST response rep
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.3.6 (2026-10-27)
+
+- (hwiedermann) Requests to the Anycubic cloud and to PyPI time out after 30 s instead of waiting indefinitely
+- (hwiedermann) Printer IDs from the cloud are cleaned of forbidden characters before they are used as object IDs
+
 ### 0.3.5 (2026-10-08)
 
 - (hwiedermann) ACE humidity no longer jumps to a fixed cloud value (e.g. 22 %) with every REST resync, only MQTT reports the real value
@@ -114,12 +119,6 @@ The ACE temperature and humidity are taken from MQTT only: the REST response rep
 
 - (hwiedermann) Filament slot colours use role `text` instead of `level.color.rgb` (read-only state, `level.*` requires write access)
 - (hwiedermann) Object names are translated into all ioBroker languages
-
-### 0.3.1 (2026-10-04)
-
-- (hwiedermann) Durations (remaining and elapsed time, drying) use the unit `m` defined for role `value.interval`; values are still minutes
-- (hwiedermann) Admin: number fields follow the responsive layout recommendations
-- (hwiedermann) Documentation linked in io-package.json, README links the device and manufacturer page
 
 [Older changes](CHANGELOG_OLD.md)
 
