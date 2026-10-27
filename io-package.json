@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "news": {
+      "0.3.6": {
+        "en": "Requests to the Anycubic cloud and to PyPI time out after 30 s instead of waiting indefinitely. Printer IDs from the cloud are cleaned of forbidden characters before they are used as object IDs",
+        "de": "Anfragen an die Anycubic-Cloud und an PyPI brechen nach 30 s ab, statt unbegrenzt zu warten. Drucker-IDs aus der Cloud werden von unzulässigen Zeichen bereinigt, bevor sie als Objekt-ID dienen",
+        "ru": "Запросы к облаку Anycubic и к PyPI прерываются через 30 с вместо бесконечного ожидания. Идентификаторы принтеров из облака очищаются от недопустимых символов перед использованием в качестве ID объектов",
+        "pt": "Os pedidos à nuvem Anycubic e ao PyPI terminam após 30 s em vez de esperar indefinidamente. Os IDs das impressoras vindos da nuvem são limpos de caracteres proibidos antes de serem usados como IDs de objeto",
+        "nl": "Verzoeken aan de Anycubic-cloud en aan PyPI worden na 30 s afgebroken in plaats van onbeperkt te wachten. Printer-ID's uit de cloud worden ontdaan van verboden tekens voordat ze als object-ID worden gebruikt",
+        "fr": "Les requêtes vers le cloud Anycubic et vers PyPI expirent après 30 s au lieu d'attendre indéfiniment. Les ID d'imprimante issus du cloud sont nettoyés des caractères interdits avant d'être utilisés comme ID d'objet",
+        "it": "Le richieste al cloud Anycubic e a PyPI scadono dopo 30 s invece di attendere all'infinito. Gli ID delle stampanti provenienti dal cloud vengono ripuliti dai caratteri non consentiti prima di essere usati come ID oggetto",
+        "es": "Las solicitudes a la nube de Anycubic y a PyPI se cancelan tras 30 s en lugar de esperar indefinidamente. Los ID de impresora de la nube se limpian de caracteres no permitidos antes de usarse como ID de objeto",
+        "pl": "Zapytania do chmury Anycubic i do PyPI są przerywane po 30 s zamiast czekać bez końca. Identyfikatory drukarek z chmury są oczyszczane z niedozwolonych znaków, zanim zostaną użyte jako ID obiektów",
+        "uk": "Запити до хмари Anycubic і до PyPI перериваються через 30 с замість нескінченного очікування. Ідентифікатори принтерів із хмари очищуються від недозволених символів перед використанням як ID об'єктів",
+        "zh-cn": "对 Anycubic 云和 PyPI 的请求在 30 秒后超时，不再无限等待。来自云端的打印机 ID 在用作对象 ID 之前会清除不允许的字符"
+      },
       "0.3.5": {
         "en": "ACE humidity no longer jumps to a fixed cloud value (e.g. 22 %) every 10 minutes",
         "de": "Die ACE-Feuchte springt nicht mehr alle 10 Minuten auf einen festen Cloud-Wert (z. B. 22 %)",
@@ -80,19 +93,6 @@
         "pl": "BREAKING: ID i wartości stanów są teraz po angielsku (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Stare obiekty są usuwane przy pierwszym uruchomieniu, historia zużycia filamentu zostaje przeniesiona. Dane History/SQL/InfluxDB pozostają przy starych ID, dostosuj skrypty i wizualizacje. Obsługa trybu kompaktowego. Skrypt tokenu nazywa się teraz `tools/get-token.ps1`.",
         "uk": "BREAKING: ID та значення станів тепер англійською (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Старі об'єкти видаляються під час першого запуску, історія витрати філаменту зберігається. Дані History/SQL/InfluxDB залишаються за старими ID, адаптуйте скрипти та візуалізації. Підтримується компактний режим. Скрипт токена перейменовано на `tools/get-token.ps1`.",
         "zh-cn": "BREAKING：状态 ID 和值现为英文（`zustand` → `status`, `temp.duese` → `temperature.nozzle`）。首次启动时删除旧对象，耗材用量历史会被保留。History/SQL/InfluxDB 数据仍保留在旧 ID 下，请调整脚本和可视化。支持紧凑模式。令牌脚本更名为 `tools/get-token.ps1`。"
-      },
-      "0.2.2": {
-        "en": "Token helper script is no longer part of the npm package (download from GitHub, linked in README and admin); integration tests on Node 22/24/26 on Linux, Windows and macOS; releases via the standard ioBroker deploy action",
-        "de": "Token-Hilfsskript ist nicht mehr Teil des npm-Pakets (Download von GitHub, verlinkt in README und Admin); Integrationstests auf Node 22/24/26 unter Linux, Windows und macOS; Releases über die Standard-Deploy-Action von ioBroker",
-        "ru": "Вспомогательный сценарий токена больше не является частью пакета npm (загрузить с GitHub, ссылка на README и администратора); интеграционные тесты на Node 22/24/26 на Linux, Windows и macOS; выпуски через стандартное действие развертывания ioBroker",
-        "pt": "O script auxiliar do token não faz mais parte do pacote npm (download do GitHub, link no README e admin); testes de integração em Node 22/24/26 em Linux, Windows e macOS; lançamentos por meio da ação de implantação padrão do ioBroker",
-        "nl": "Token-helperscript maakt niet langer deel uit van het npm-pakket (downloaden van GitHub, gekoppeld in README en admin); integratietests op Node 22/24/26 op Linux, Windows en macOS; releases via de standaard ioBroker-implementatieactie",
-        "fr": "Le script d'assistance de jeton ne fait plus partie du package npm (téléchargement depuis GitHub, lié dans README et admin) ; tests d'intégration sur Node 22/24/26 sous Linux, Windows et macOS ; versions via l'action de déploiement standard d'ioBroker",
-        "it": "Lo script helper token non fa più parte del pacchetto npm (scaricabile da GitHub, collegato in README e admin); test di integrazione sul Nodo 22/24/26 su Linux, Windows e macOS; rilasci tramite l'azione di distribuzione standard di ioBroker",
-        "es": "El script auxiliar de token ya no forma parte del paquete npm (descarga desde GitHub, vinculado en README y admin); pruebas de integración en el Nodo 22/24/26 en Linux, Windows y macOS; lanzamientos a través de la acción de implementación estándar de ioBroker",
-        "pl": "Skrypt pomocniczy tokenu nie jest już częścią pakietu npm (do pobrania z GitHub, link w README i admin); testy integracyjne na Node 22/24/26 na systemach Linux, Windows i macOS; wydania poprzez standardową akcję wdrażania ioBroker",
-        "uk": "Сценарій допоміжного маркера більше не є частиною пакета npm (завантажити з GitHub, посилання на README та admin); інтеграційні тести на Node 22/24/26 на Linux, Windows і macOS; випуски за допомогою стандартної дії ioBroker розгортання",
-        "zh-cn": "令牌帮助程序脚本不再是 npm 包的一部分（从 GitHub 下载，在 README 和 admin 中链接）； Linux、Windows 和 macOS 上的 Node 22/24/26 集成测试；通过标准 ioBroker 部署操作发布"
       }
     },
     "titleLang": {

@@ -257,7 +257,11 @@ class AnycubicCloud extends utils.Adapter {
         try {
             const list = (await this.api!.request<any[]>(ENDPOINT.printers)).data ?? [];
             for (const d of list) {
-                const id = String(d.id);
+                const id = this.objectId(d.id);
+                if (!id) {
+                    this.log.warn(`Printer without usable ID skipped: ${JSON.stringify(d.id)}`);
+                    continue;
+                }
                 let p = this.printers.get(d.key);
                 if (!p) {
                     p = await this.addPrinter(id, d);
@@ -280,6 +284,15 @@ class AnycubicCloud extends utils.Adapter {
         } finally {
             this.resyncRunning = false;
         }
+    }
+
+    /* The printer ID comes from the cloud. It is numeric today, but is cleaned like any value not defined here:
+       forbidden characters and dots (would create sub-levels) become '_' */
+    private objectId(raw: string | number | undefined): string {
+        return String(raw ?? '')
+            .trim()
+            .replace(this.FORBIDDEN_CHARS, '_')
+            .replace(/[.\s]/g, '_');
     }
 
     private async addPrinter(id: string, d: any): Promise<Printer> {
@@ -307,8 +320,8 @@ class AnycubicCloud extends utils.Adapter {
         const objects = await this.getAdapterObjectsAsync();
         let changed = 0;
         for (const [id, obj] of Object.entries(objects)) {
-            const m = id.slice(this.namespace.length + 1).match(/^(\d+)\.(.+)$/);
-            if (!m) {
+            const m = id.slice(this.namespace.length + 1).match(/^([^.]+)\.(.+)$/);
+            if (!m || m[1] === 'info') {
                 continue;
             }
             const rel = m[2];

@@ -6,6 +6,7 @@ export const MQTT_HOST = 'mqtt-universe.anycubic.com';
 export const MQTT_PORT = 8883;
 export const DEVICE_TYPE = 'pcf'; // Slicer Next
 export const RATE_LIMIT_MARKERS = ['请求过于频繁', 'too frequent'];
+export const HTTP_TIMEOUT_MS = 30_000; // REST and PyPI requests, same as the MQTT connect timeout
 
 export const ENDPOINT = {
     tokenExchange: ['POST', '/v3/public/loginWithAccessToken'],

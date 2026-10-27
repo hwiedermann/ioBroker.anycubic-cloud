@@ -1,4 +1,10 @@
 # Older changes
+## 0.3.1 (2026-10-04)
+
+- (hwiedermann) Durations (remaining and elapsed time, drying) use the unit `m` defined for role `value.interval`; values are still minutes
+- (hwiedermann) Admin: number fields follow the responsive layout recommendations
+- (hwiedermann) Documentation linked in io-package.json, README links the device and manufacturer page
+
 ## 0.3.0 (2026-10-04)
 
 - (hwiedermann) BREAKING: State IDs and values are now English, e.g. `zustand` is now `status` and `temp.duese` is now `temperature.nozzle`. Old objects are deleted on the first start, the filament usage history is carried over. History, SQL or InfluxDB data stays with the old IDs. Adapt scripts and visualizations.

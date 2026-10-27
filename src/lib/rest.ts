@@ -1,7 +1,7 @@
 /* REST access to the Anycubic cloud: token exchange and read-only requests.
    After anycubic-cloud-api api/base.py (_fetch_ext_resp, _get_user_token_with_access_token). */
 import { setTimeout as delay } from 'node:timers/promises';
-import { API_ROOT, ENDPOINT, RATE_LIMIT_MARKERS } from './constants.ts';
+import { API_ROOT, ENDPOINT, HTTP_TIMEOUT_MS, RATE_LIMIT_MARKERS } from './constants.ts';
 import { signedHeaders, type Credentials } from './signature.ts';
 
 type Endpoint = (typeof ENDPOINT)[keyof typeof ENDPOINT];
@@ -36,6 +36,7 @@ export class AnycubicRest {
             method,
             headers: signedHeaders(this.credentials, opt.withToken === false ? undefined : this.userToken),
             body: method === 'POST' ? JSON.stringify(opt.body ?? {}) : undefined,
+            signal: AbortSignal.timeout(HTTP_TIMEOUT_MS), // also covers reading the body
         });
         const text = await r.text();
         try {
