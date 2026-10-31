@@ -93,6 +93,9 @@ The ACE temperature and humidity are taken from MQTT only: the REST response rep
 
 ## Changelog
 
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22.19.0 now
+
 <!--
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
