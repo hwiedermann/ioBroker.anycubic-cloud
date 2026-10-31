@@ -287,12 +287,11 @@ class AnycubicCloud extends utils.Adapter {
     }
 
     /* The printer ID comes from the cloud. It is numeric today, but is cleaned like any value not defined here:
-       forbidden characters and dots (would create sub-levels) become '_' */
+       everything outside a-z, A-Z, 0-9, '-' and '_' becomes '_' (dots would create sub-levels) */
     private objectId(raw: string | number | undefined): string {
         return String(raw ?? '')
             .trim()
-            .replace(this.FORBIDDEN_CHARS, '_')
-            .replace(/[.\s]/g, '_');
+            .replace(/[^a-zA-Z0-9_-]/g, '_');
     }
 
     private async addPrinter(id: string, d: any): Promise<Printer> {

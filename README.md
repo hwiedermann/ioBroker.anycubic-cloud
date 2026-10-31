@@ -31,7 +31,7 @@ The adapter is not in the ioBroker repository yet. Install it from npm:
 iobroker url iobroker.anycubic-cloud
 ```
 
-Requirements: Node.js 22.18 or newer, js-controller 6.0.11 or newer, Admin 7.6.20 or newer.
+Requirements: Node.js 22.19 or newer, js-controller 6.0.11 or newer, Admin 7.6.20 or newer.
 
 ## Configuration
 
@@ -97,6 +97,11 @@ The ACE temperature and humidity are taken from MQTT only: the REST response rep
     Placeholder for the next version (at the beginning of the line):
     ### **WORK IN PROGRESS**
 -->
+### 0.3.7 (2026-10-31)
+
+- (hwiedermann) Printer IDs from the cloud are restricted to letters, digits, `-` and `_`, every other character becomes `_`
+- (hwiedermann) Adapter requires Node.js >= 22.19.0 now
+
 ### 0.3.6 (2026-10-27)
 
 - (hwiedermann) Requests to the Anycubic cloud and to PyPI time out after 30 s instead of waiting indefinitely
@@ -114,11 +119,6 @@ The ACE temperature and humidity are taken from MQTT only: the REST response rep
 ### 0.3.3 (2026-10-05)
 
 - (hwiedermann) Name and role of existing objects are updated on start, not only when a new value arrives
-
-### 0.3.2 (2026-10-05)
-
-- (hwiedermann) Filament slot colours use role `text` instead of `level.color.rgb` (read-only state, `level.*` requires write access)
-- (hwiedermann) Object names are translated into all ioBroker languages
 
 [Older changes](CHANGELOG_OLD.md)
 

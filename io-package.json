@@ -1,8 +1,21 @@
 {
   "common": {
     "name": "anycubic-cloud",
-    "version": "0.3.6",
+    "version": "0.3.7",
     "news": {
+      "0.3.7": {
+        "en": "Printer IDs from the cloud are restricted to letters, digits, '-' and '_'. The adapter requires Node.js 22.19.0 or newer",
+        "de": "Drucker-IDs aus der Cloud bestehen nur noch aus Buchstaben, Ziffern, '-' und '_'. Der Adapter benötigt Node.js 22.19.0 oder neuer",
+        "ru": "Идентификаторы принтеров из облака ограничены буквами, цифрами, '-' и '_'. Адаптеру требуется Node.js 22.19.0 или новее",
+        "pt": "Os IDs das impressoras vindos da nuvem limitam-se a letras, dígitos, '-' e '_'. O adaptador requer Node.js 22.19.0 ou mais recente",
+        "nl": "Printer-ID's uit de cloud bestaan alleen nog uit letters, cijfers, '-' en '_'. De adapter vereist Node.js 22.19.0 of nieuwer",
+        "fr": "Les ID d'imprimante issus du cloud se limitent aux lettres, chiffres, '-' et '_'. L'adaptateur nécessite Node.js 22.19.0 ou plus récent",
+        "it": "Gli ID delle stampanti provenienti dal cloud sono limitati a lettere, cifre, '-' e '_'. L'adattatore richiede Node.js 22.19.0 o superiore",
+        "es": "Los ID de impresora de la nube se limitan a letras, dígitos, '-' y '_'. El adaptador requiere Node.js 22.19.0 o posterior",
+        "pl": "Identyfikatory drukarek z chmury składają się tylko z liter, cyfr, '-' i '_'. Adapter wymaga Node.js 22.19.0 lub nowszego",
+        "uk": "Ідентифікатори принтерів із хмари обмежено літерами, цифрами, '-' та '_'. Адаптеру потрібен Node.js 22.19.0 або новіший",
+        "zh-cn": "来自云端的打印机 ID 仅限字母、数字、'-' 和 '_'。适配器需要 Node.js 22.19.0 或更高版本"
+      },
       "0.3.6": {
         "en": "Requests to the Anycubic cloud and to PyPI time out after 30 s instead of waiting indefinitely. Printer IDs from the cloud are cleaned of forbidden characters before they are used as object IDs",
         "de": "Anfragen an die Anycubic-Cloud und an PyPI brechen nach 30 s ab, statt unbegrenzt zu warten. Drucker-IDs aus der Cloud werden von unzulässigen Zeichen bereinigt, bevor sie als Objekt-ID dienen",
@@ -80,19 +93,6 @@
         "pl": "Czasy trwania używają jednostki m roli value.interval (wartości nadal w minutach); responsywny układ admina; podlinkowana dokumentacja",
         "uk": "Тривалості використовують одиницю m ролі value.interval (значення й далі в хвилинах); адаптивний макет адмінки; документацію пов'язано",
         "zh-cn": "时长使用角色 value.interval 的单位 m（数值仍为分钟）；管理界面响应式布局；已链接文档"
-      },
-      "0.3.0": {
-        "en": "BREAKING: state IDs and values are now English (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Old objects are deleted on the first start, the filament usage history is carried over. History/SQL/InfluxDB data stays with the old IDs, adapt scripts and visualizations. Compact mode supported. Token script renamed to `tools/get-token.ps1`.",
-        "de": "BREAKING: Datenpunkte und Werte sind jetzt englisch (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Alte Objekte werden beim ersten Start gelöscht, der Filamentverbrauch wird übernommen. Daten von History/SQL/InfluxDB bleiben an den alten IDs, Skripte und Visualisierungen anpassen. Compact-Modus unterstützt. Token-Skript heißt jetzt `tools/get-token.ps1`.",
-        "ru": "BREAKING: ID и значения состояний теперь на английском (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Старые объекты удаляются при первом запуске, история расхода филамента сохраняется. Данные History/SQL/InfluxDB остаются у старых ID, адаптируйте скрипты и визуализации. Поддерживается компактный режим. Скрипт токена переименован в `tools/get-token.ps1`.",
-        "pt": "BREAKING: IDs e valores dos estados agora estão em inglês (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Objetos antigos são excluídos na primeira inicialização, o histórico de consumo de filamento é mantido. Dados de History/SQL/InfluxDB permanecem nos IDs antigos, adapte scripts e visualizações. Modo compacto suportado. Script do token renomeado para `tools/get-token.ps1`.",
-        "nl": "BREAKING: state-ID's en waarden zijn nu Engels (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Oude objecten worden bij de eerste start verwijderd, de filamentverbruikshistorie wordt overgenomen. History/SQL/InfluxDB-gegevens blijven bij de oude ID's, pas scripts en visualisaties aan. Compacte modus ondersteund. Tokenscript hernoemd naar `tools/get-token.ps1`.",
-        "fr": "BREAKING : les ID et valeurs des états sont désormais en anglais (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Les anciens objets sont supprimés au premier démarrage, l'historique de consommation de filament est repris. Les données History/SQL/InfluxDB restent sur les anciens ID, adaptez scripts et visualisations. Mode compact pris en charge. Script du jeton renommé en `tools/get-token.ps1`.",
-        "it": "BREAKING: ID e valori degli stati sono ora in inglese (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). I vecchi oggetti vengono eliminati al primo avvio, lo storico del consumo di filamento viene mantenuto. I dati di History/SQL/InfluxDB restano sui vecchi ID, adattare script e visualizzazioni. Modalità compatta supportata. Script del token rinominato in `tools/get-token.ps1`.",
-        "es": "BREAKING: los ID y valores de los estados ahora están en inglés (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Los objetos antiguos se eliminan en el primer inicio, el historial de consumo de filamento se conserva. Los datos de History/SQL/InfluxDB quedan en los ID antiguos, adapte scripts y visualizaciones. Modo compacto compatible. Script del token renombrado a `tools/get-token.ps1`.",
-        "pl": "BREAKING: ID i wartości stanów są teraz po angielsku (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Stare obiekty są usuwane przy pierwszym uruchomieniu, historia zużycia filamentu zostaje przeniesiona. Dane History/SQL/InfluxDB pozostają przy starych ID, dostosuj skrypty i wizualizacje. Obsługa trybu kompaktowego. Skrypt tokenu nazywa się teraz `tools/get-token.ps1`.",
-        "uk": "BREAKING: ID та значення станів тепер англійською (`zustand` → `status`, `temp.duese` → `temperature.nozzle`). Старі об'єкти видаляються під час першого запуску, історія витрати філаменту зберігається. Дані History/SQL/InfluxDB залишаються за старими ID, адаптуйте скрипти та візуалізації. Підтримується компактний режим. Скрипт токена перейменовано на `tools/get-token.ps1`.",
-        "zh-cn": "BREAKING：状态 ID 和值现为英文（`zustand` → `status`, `temp.duese` → `temperature.nozzle`）。首次启动时删除旧对象，耗材用量历史会被保留。History/SQL/InfluxDB 数据仍保留在旧 ID 下，请调整脚本和可视化。支持紧凑模式。令牌脚本更名为 `tools/get-token.ps1`。"
       }
     },
     "titleLang": {
