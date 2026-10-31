@@ -27,7 +27,7 @@ Der Adapter ist noch nicht im ioBroker-Repository. Installation von npm:
 iobroker url iobroker.anycubic-cloud
 ```
 
-Voraussetzungen: Node.js ab 22.18, js-controller ab 6.0.11, Admin ab 7.6.20.
+Voraussetzungen: Node.js ab 22.19, js-controller ab 6.0.11, Admin ab 7.6.20.
 
 ## Konfiguration
 

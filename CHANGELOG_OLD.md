@@ -1,4 +1,9 @@
 # Older changes
+## 0.3.2 (2026-10-05)
+
+- (hwiedermann) Filament slot colours use role `text` instead of `level.color.rgb` (read-only state, `level.*` requires write access)
+- (hwiedermann) Object names are translated into all ioBroker languages
+
 ## 0.3.1 (2026-10-04)
 
 - (hwiedermann) Durations (remaining and elapsed time, drying) use the unit `m` defined for role `value.interval`; values are still minutes
