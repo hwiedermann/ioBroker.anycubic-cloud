@@ -26,3 +26,7 @@ updates:
       - dependency-name: '@types/node'
         update-types:
           - 'version-update:semver-major'
+      # TypeScript 7 erst, wenn typescript-eslint es unterstützt (peer: typescript <6.1.0)
+      - dependency-name: 'typescript'
+        update-types:
+          - 'version-update:semver-major'
